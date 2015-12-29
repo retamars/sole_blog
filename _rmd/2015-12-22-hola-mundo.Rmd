@@ -29,9 +29,9 @@ Ale, a escribir
 
 
 ``` {r, eval=FALSE, echo= TRUE}
-PD: recuerda que si quieres escribir con ficheros (.Rmd) y publicarlos directamente en el blog, has de hacer lo siguiente:   
+PD: recuerda que si quieres escribir con ficheros (.Rmd):   
 
-0) Escribe un fichero .Rmd pero el yaml header ha de tener (mira el fichero en la carpeta _rmd):     
+0) Escribe en .Rmd pero el yaml header ha de tener (mira el fichero en la carpeta _rmd):     
 
     - layout: post    
     
