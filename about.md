@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Lecturer at the UV. About a year trying to learn R & computing. This blog is mainly for me, to remenber the think I learn
+Lecturer at the UV. I want to write lo que me de la gana
 
 
 ### Contact
