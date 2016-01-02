@@ -42,3 +42,6 @@ PD: recuerda que si quieres escribir con ficheros (.Rmd):
  
 2) En la consola de RStudio ejecuta:  rmd2md()  
 {% endhighlight %}
+ 
+ 
+Un poco mejor explicado [aquí](http://perezp44.github.io/r/Tutorial-para-crear-Jekyll-blog-hosted-in-Gitbub/)
