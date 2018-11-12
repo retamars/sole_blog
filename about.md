@@ -4,9 +4,9 @@ title: About
 permalink: /about/
 ---
 
-Lecturer at the UV. I want to write lo que me de la gana
+Para contactarme
 
 
 ### Contact
 
-[tu.mail@uv.es](mailto:tu.mail@uv.es)
+[soledad.retamar@gmail.com](mailto:soledad.retamar@gmail.com)
