@@ -1,16 +1,17 @@
 ---
 layout: post
-title: Hola Mundo
-author: Pedro J. Perez
+title: Blog RStudio
+author: Soledad Retamar
 published: true
 status: publish
 draft: false
 tags: myblog
 ---
  
-Hello world,
+Bienvenidos,
  
-Si lees esto es que has conseguido montar tu jekyll blog hosted in Github!! Guau!! 
+Este blog intenta mostrar algunos de los trabajos realizados en R por el grupo de investigación GIBD.
+Les mostraremos aplicaciones sencillas de Minería de Texto y dejaremos todo el código de las mismas alojadas en el repositorio ...
  
 - Acuerdate que has de modificar el fichero **_config.yml** para poner tus datos (nombre , e-mail etc...). Lo que tienes que cambiar esta señalado con la marca [AQUI+]   
  
