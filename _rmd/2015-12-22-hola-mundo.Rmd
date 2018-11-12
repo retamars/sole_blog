@@ -1,16 +1,17 @@
 ---
 layout: post
-title: Hola Mundo
-author: Pedro J. Perez
+title: Consejo Superior UTN
+author: Soledad Retamar
 published: false
 status: process
 draft: false
-tags: myblog
+tags: consejo
 ---
 
-Hello world,
+Hola a tod@s,
 
-Si lees esto es que has conseguido montar tu jekyll blog hosted in Github!! Guau!! 
+Este post surge del trabajo realizado en el grupo de investigación GIBD, como ejemplo de aplicación de algunas herramientas de minería de texto.
+Si les gusta y lo quieren compartir se encuentra todo el código alojado en el repositorio ** / **
 
 - Acuerdate que has de modificar el fichero **_config.yml** para poner tus datos (nombre , e-mail etc...). Lo que tienes que cambiar esta señalado con la marca [AQUI+]   
 
