@@ -6,11 +6,9 @@
 name: Soledad Retamar    #- pon tu nombre en lugar del mio [AQUI+]
 
 # Short bio or description (displayed in the header)
-<<<<<<< HEAD
+
 description: Blog para compartir algunos trabajos en R #- pon tu descripcion de lo que quires hacer en el blog [AQUI+]
-=======
-description: Blog para compartir trabajos en R  #- pon tu descripcion de lo que quires hacer en el blog [AQUI+]
->>>>>>> e889213e468592e1fd26fcc05c538c69b417c428
+
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: /images/meSmall.jpg
@@ -47,7 +45,7 @@ url: https://retamars.github.io/sole_blog/
 # (http://yourusername.github.io/repository-name)
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
-baseurl: "https://retamars.github.io/sole_blog"
+
 baseurl: "/sole_blog"
 
 #
