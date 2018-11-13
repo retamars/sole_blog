@@ -50,14 +50,19 @@ Podemos aplicar estas funciones a nuestros datos utilizando la función annotate
 {% highlight r %}
 noticia1_annotations <- annotate(noticia, list(oracion_ann, palabras_ann))
 {% endhighlight %}
- 
 El objeto creado contiene ahora un objeto que contiene una lista de oraciones y de palabras identificadas por posición. 
-  id  type     start end features
-   1 sentence     1 250 constituents=<<integer,42>>
-   2 sentence   252 455 constituents=<<integer,37>>
-   ...
-   7 word         1   6 
-   8 word         8  12 
+
+{% highlight text %}
+##  id type     start end features
+##   1 sentence     1 254 constituents=<<integer,42>>
+##   2 sentence   256 462 constituents=<<integer,37>>
+##   3 sentence   464 616 constituents=<<integer,25>>
+##   4 sentence   618 670 constituents=<<integer,11>>
+##   5 sentence   672 706 constituents=<<integer,6>>
+##   6 sentence   708 899 constituents=<<integer,35>>
+##   7 word         1   6 
+##   8 word         8  12
+{% endhighlight %}
 En nuestro ejemplo, la primera oración en el documento comienza en el caracter 1 y termina en el caracter 250. En el caso de la primer palabra detectada sus posicion inicial es 1 y finaliza en el caracter 6.
  
 Para combinar la noticia y el objeto creado con las posiciones usaremos la función AnnotatedPlainTextDocument del paquete NLP. Si quisiéramos, también podríamos asociar metadatos con el objeto usando el argumento "meta".
