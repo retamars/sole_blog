@@ -3,7 +3,7 @@ layout: post
 title: Reconocimiento de Entidades
 author: Soledad Retamar
 published: true
-status: publish
+status: process
 draft: false
 tags: entidades
 ---
