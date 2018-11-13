@@ -8,23 +8,17 @@ draft: false
 tags: entidades
 ---
 
-```{r setup, include=FALSE} knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=FALSE} knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## R Markdown
+## Detección de oraciones y palabras
+Con estas lineas de código describiremos como detectar oraciones, palabras, personas, lugares y organizaciones en un texto. Para realizarlo mas práctico en este ejemplo analizaremos una noticia extraída y asignaremos el texto en el código, pero se podría aplicar al texto que obtengamos dinamicamente de nuestras fuentes de datos.
 
-Anotaciones de frases y palabras
-Ahora que tenemos el archivo cargado, podemos comenzar a convertirlo en palabras y oraciones. 
- Este es un requisito previo para cualquier otro tipo de procesamiento de lenguaje natural, 
-porque ese tipo de acciones de PNL tendrá que saber dónde están las palabras y las oraciones. 
-Paquetes necesarios: NLP, openNLP y magrittr
+Los paquetes necesarios serán: NLP, openNLP y magrittr
 
 ```{r}
 library(NLP)
 library(openNLP)
-library(rJava)
-library(RWeka)
-library(qdap)
 library(magrittr)
 
 noticia <- as.String('Donald Trump apuntó este martes contra el presidente francés, 
