@@ -1,7 +1,13 @@
 ---
-title: "Reconocimiento de Entidades en Texto"
-output: html_document
+layout: post
+title: Reconocimiento de Entidades
+author: Soledad Retamar
+published: true
+status: publish
+draft: false
+tags: entidades
 ---
+ 
 
 ```{r setup, include=FALSE} knitr::opts_chunk$set(echo = TRUE)
 ```
