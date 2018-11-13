@@ -28,7 +28,11 @@ library(RWeka)
 library(qdap)
 library(magrittr)
 
-noticia <- as.String(news[[2]]$body)
+noticia <- as.String('Donald Trump apuntó este martes contra el presidente francés, Emmanuel Macron, por su propuesta de crear un ejército europeo, en un nuevo reclamo hacia sus aliados europeos para que refuercen su aporte económico hacia el financiamiento de la OTAN.
+
+Macron declaró la semana pasada la necesidad de proteger con unas fuerzas armadas a Europa, "en relación a China, Rusia e incluso Estados Unidos", una idea que Trump calificó el viernes como "insultante". Ahora, renovó su rechazo con un mordaz comentario, reabriendo heridas entre París y Berlín, hoy estrechos aliados y defensores del multilateralismo.
+
+"Fue Alemania en la Primera y Segunda Guerra Mundial. ¿Cómo funcionó eso para Francia? Ellos estaban comenzando a aprender alemán en París antes de que EEUU intervenga", escribió en su Twitter, en referencia a la ocupación nazi sobre la capital francesa, entre 1940 y 1944.')
 
 ```
 
