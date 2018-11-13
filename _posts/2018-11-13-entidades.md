@@ -136,61 +136,16 @@ Anteriormente pasamos una lista de funciones de anotador a la función annotate(
  
 
 {% highlight r %}
-annot.l1 = NLP::annotate(noticia1, list(oracion_ann, palabras_ann,ubicacion_ann,persona_ann, organizacion_ann))
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in as.String(s): object 'noticia1' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
+annot.l1 = NLP::annotate(noticia, list(oracion_ann, palabras_ann,ubicacion_ann,persona_ann, organizacion_ann))
 k <- sapply(annot.l1$features, `[[`, "kind")
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in lapply(X = X, FUN = FUN, ...): object 'annot.l1' not found
 {% endhighlight %}
  
 ### Personas que aparecen en la noticia
 
 {% highlight r %}
-personas = noticia1[annot.l1[k == "person"]]
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): object 'noticia1' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
-lugares = noticia1[annot.l1[k == "location"]]
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): object 'noticia1' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
-org = noticia1[annot.l1[k == "organization"]]
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in eval(expr, envir, enclos): object 'noticia1' not found
+personas = noticia[annot.l1[k == "person"]]
+lugares = noticia[annot.l1[k == "location"]]
+org = noticia[annot.l1[k == "organization"]]
 {% endhighlight %}
  
  
