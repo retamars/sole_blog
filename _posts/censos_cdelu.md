@@ -1,17 +1,17 @@
 ---
 layout: post
-title: Consejo Superior UTN
+title: Censos en CdelU
 author: Soledad Retamar
 published: true
 status: publish
 draft: false
-tags: consejo
+tags: myblog
 ---
  
-Hola a tod@s,
+Bienvenidos,
  
-Este post surge del trabajo realizado en el grupo de investigación GIBD, como ejemplo de aplicación de algunas herramientas de minería de texto.
-Si les gusta y lo quieren compartir se encuentra todo el código alojado en el repositorio ** / **
+Este blog intenta mostrar algunos de los trabajos realizados en R por el grupo de investigación GIBD.
+Les mostraremos aplicaciones sencillas de Minería de Texto y dejaremos todo el código de las mismas alojadas en el repositorio ...
  
 - Acuerdate que has de modificar el fichero **_config.yml** para poner tus datos (nombre , e-mail etc...). Lo que tienes que cambiar esta señalado con la marca [AQUI+]   
  

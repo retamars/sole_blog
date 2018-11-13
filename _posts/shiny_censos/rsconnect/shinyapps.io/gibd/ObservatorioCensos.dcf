@@ -1,0 +1,11 @@
+name: ObservatorioCensos
+title: ObservatorioCensos
+account: gibd
+server: shinyapps.io
+appId: 247885
+bundleId: 1580379
+url: https://gibd.shinyapps.io/ObservatorioCensos/
+when: 1536676117.30293
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|Censo2001GKBien_CdelU_Indic.dbf|Censo2001GKBien_CdelU_Indic.qpj|Censo2001GKBien_CdelU_Indic.shp|Censo2001GKBien_CdelU_Indic.shx|Censo2010GK_CdelU_Indic.FRARAD.atx|Censo2010GKBien_CdelU_Indic.dbf|Censo2010GKBien_CdelU_Indic.prj|Censo2010GKBien_CdelU_Indic.sbn|Censo2010GKBien_CdelU_Indic.sbx|Censo2010GKBien_CdelU_Indic.shp|Censo2010GKBien_CdelU_Indic.shx|CensosIndecCdelU.qgs|CensosIndecCdelU.qgs~|radios2010Bien.dbf|radios2010Bien.prj|radios2010Bien.qpj|radios2010Bien.shp|radios2010Bien.shx|script.R
