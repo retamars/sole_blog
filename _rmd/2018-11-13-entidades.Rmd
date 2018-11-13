@@ -96,16 +96,22 @@ k <- sapply(annot.l1$features, `[[`, "kind")
 ### Personas que aparecen en la noticia
 ```{r}
 personas = noticia[annot.l1[k == "person"]]
+
+personas
 ```
 
 ### Lugares
 ```{r}
 lugares = noticia[annot.l1[k == "location"]]
+
+lugares
 ```
 
 ### Organizaciones
 ```{r}
 org = noticia[annot.l1[k == "organization"]]
+
+org
 ```
 
 
