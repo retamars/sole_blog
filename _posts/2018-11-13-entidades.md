@@ -144,7 +144,17 @@ k <- sapply(annot.l1$features, `[[`, "kind")
 
 {% highlight r %}
 personas = noticia[annot.l1[k == "person"]]
+{% endhighlight %}
+ 
+### Lugares
+
+{% highlight r %}
 lugares = noticia[annot.l1[k == "location"]]
+{% endhighlight %}
+ 
+### Organizaciones
+
+{% highlight r %}
 org = noticia[annot.l1[k == "organization"]]
 {% endhighlight %}
  
