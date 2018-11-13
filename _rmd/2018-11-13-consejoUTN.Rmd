@@ -5,15 +5,16 @@ author: Soledad Retamar
 published: true
 status: process
 draft: false
-tags: consejoUTN
+tags: consejo
 ---
 
 ```{r setup, include=FALSE} knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Detección de oraciones y palabras
+## Actas de reuniones del Consejo Superior de UTN
 En este post trataremos de reproducir el trabajo realizado por .
 
+En este caso hemos tomado lactas de reuniones del Consejo Superior de los últimos 10 años.
 Los paquetes necesarios serán: NLP, openNLP y magrittr
 
 ```{r, echo=FALSE}

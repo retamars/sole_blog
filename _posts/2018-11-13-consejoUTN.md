@@ -5,47 +5,36 @@ author: Soledad Retamar
 published: true
 status: publish
 draft: false
-tags: consejoUTN
+tags: consejo
 ---
  
 ```{r setup, include=FALSE} knitr::opts_chunk$set(echo = FALSE)
 ```
  
-## Detección de oraciones y palabras
+## Actas de reuniones del Consejo Superior de UTN
 En este post trataremos de reproducir el trabajo realizado por .
  
+En este caso hemos tomado lactas de reuniones del Consejo Superior de los últimos 10 años.
 Los paquetes necesarios serán: NLP, openNLP y magrittr
  
 
 {% highlight text %}
-## Error in library(pdftools): there is no package called 'pdftools'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in library(rvest): there is no package called 'rvest'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in library(readr): there is no package called 'readr'
+## Loading required package: xml2
 {% endhighlight %}
 
 
 
 {% highlight text %}
 ## 
-## Attaching package: 'purrr'
+## Attaching package: 'rvest'
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## The following object is masked from 'package:magrittr':
+## The following object is masked from 'package:purrr':
 ## 
-##     set_names
+##     pluck
 {% endhighlight %}
 
 
@@ -60,159 +49,64 @@ Los paquetes necesarios serán: NLP, openNLP y magrittr
 
 {% highlight text %}
 ## 
-## Attaching package: 'stringr'
+## Attaching package: 'readr'
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## The following object is masked from 'package:qdap':
+## The following object is masked from 'package:rvest':
 ## 
-##     %>%
+##     guess_encoding
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## 
-## Attaching package: 'dplyr'
+## -- Attaching packages ---------------------------------- tidyverse 1.2.1 --
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## The following object is masked from 'package:qdap':
-## 
-##     %>%
+## v forcats 0.3.0
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## The following object is masked from 'package:qdapTools':
-## 
-##     id
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:qdapRegex':
-## 
-##     explain
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
+## -- Conflicts ------------------------------------- tidyverse_conflicts() --
+## x ggplot2::%+%()          masks qdapRegex::%+%()
+## x ggplot2::annotate()     masks NLP::annotate()
+## x dplyr::explain()        masks qdapRegex::explain()
+## x tidyr::extract()        masks magrittr::extract()
+## x dplyr::filter()         masks stats::filter()
+## x readr::guess_encoding() masks rvest::guess_encoding()
+## x dplyr::id()             masks qdapTools::id()
+## x dplyr::lag()            masks stats::lag()
+## x rvest::pluck()          masks purrr::pluck()
+## x purrr::set_names()      masks magrittr::set_names()
 {% endhighlight %}
 
 
 
 {% highlight text %}
 ## 
-## Attaching package: 'tidyr'
+## Attaching package: 'tau'
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## The following object is masked from 'package:magrittr':
+## The following object is masked from 'package:readr':
 ## 
-##     extract
+##     tokenize
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## The following object is masked from 'package:qdap':
-## 
-##     %>%
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in library(tidyverse): there is no package called 'tidyverse'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in library(tidytext): there is no package called 'tidytext'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in library(tau): there is no package called 'tau'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in library(tokenizers): there is no package called 'tokenizers'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in library(rcorpora): there is no package called 'rcorpora'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in library(viridis): there is no package called 'viridis'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## 
-## Attaching package: 'tm'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following objects are masked from 'package:qdap':
-## 
-##     as.DocumentTermMatrix, as.TermDocumentMatrix
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## 
-## Attaching package: 'ggplot2'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:qdapRegex':
-## 
-##     %+%
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:NLP':
-## 
-##     annotate
+## Loading required package: viridisLite
 {% endhighlight %}
 
 
@@ -251,12 +145,12 @@ El objeto creado contiene ahora un objeto que contiene una lista de oraciones y 
 
 {% highlight text %}
 ##  id type     start end features
-##   1 sentence     1 254 constituents=<<integer,42>>
-##   2 sentence   256 462 constituents=<<integer,37>>
-##   3 sentence   464 616 constituents=<<integer,25>>
-##   4 sentence   618 670 constituents=<<integer,11>>
-##   5 sentence   672 706 constituents=<<integer,6>>
-##   6 sentence   708 899 constituents=<<integer,35>>
+##   1 sentence     1 250 constituents=<<integer,42>>
+##   2 sentence   252 455 constituents=<<integer,37>>
+##   3 sentence   457 606 constituents=<<integer,25>>
+##   4 sentence   608 660 constituents=<<integer,11>>
+##   5 sentence   662 693 constituents=<<integer,6>>
+##   6 sentence   695 882 constituents=<<integer,35>>
 ##   7 word         1   6 
 ##   8 word         8  12
 {% endhighlight %}
@@ -280,17 +174,20 @@ sents(noti_doc) %>% head(1)
 
 {% highlight text %}
 ## [[1]]
-##  [1] "Donald"         "Trump"          "apuntó"        "este"          
-##  [5] "martes"         "contra"         "el"             "presidente"    
-##  [9] "francés"       ","              "Emmanuel"       "Macron"        
-## [13] ","              "por"            "su"             "propuesta"     
-## [17] "de"             "crear"          "un"             "ejército"     
-## [21] "europeo"        ","              "en"             "un"            
-## [25] "nuevo"          "reclamo"        "hacia"          "sus"           
-## [29] "aliados"        "europeos"       "para"           "que"           
-## [33] "refuercen"      "su"             "aporte"         "económico"    
-## [37] "hacia"          "el"             "financiamiento" "de"            
-## [41] "la"             "OTAN."
+##  [1] "Donald"          "Trump"           "apunt�"         
+##  [4] " est"            " marte"          " contr"         
+##  [7] " e"              " president"      " franc�"        
+## [10] "�"               " \nEmmanu"       "l Macr"         
+## [13] "o"               ", p"             "r "             
+## [16] "u propues"       "a "              "e cre"          
+## [19] "r "              "n ejérc"        "to euro"        
+## [22] "p"               "o,"              "en"             
+## [25] "un nu"           "vo recl"         "o \nha"         
+## [28] "ia "             "us alia"         "os europ"       
+## [31] "os p"            "ra "             "ue refuer"      
+## [34] "en"              "su apo"          "te econó"      
+## [37] "ico h"           "ci"              "el \nfinanciami"
+## [40] "nt"              " d"              " la O"
 {% endhighlight %}
 
 
@@ -302,8 +199,8 @@ words(noti_doc) %>% head(10)
 
 
 {% highlight text %}
-##  [1] "Donald"     "Trump"      "apuntó"    "este"       "martes"    
-##  [6] "contra"     "el"         "presidente" "francés"   ","
+##  [1] "Donald"     "Trump"      "apunt�"     " est"       " marte"    
+##  [6] " contr"     " e"         " president" " franc�"    "�"
 {% endhighlight %}
  
 # Identificando personas y lugares.
