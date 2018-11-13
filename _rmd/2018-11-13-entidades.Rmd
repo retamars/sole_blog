@@ -89,15 +89,15 @@ organizacion_ann <- Maxent_Entity_Annotator(language ="es", kind = "organization
 Anteriormente pasamos una lista de funciones de anotador a la función annotate() para indicar qué tipo de anotaciones queríamos hacer. Crearemos una nueva lista para mantener nuestros anotadores en el orden en que queremos aplicarlos
 
 ```{r}
-annot.l1 = NLP::annotate(noticia1, list(oracion_ann, palabras_ann,ubicacion_ann,persona_ann, organizacion_ann))
+annot.l1 = NLP::annotate(noticia, list(oracion_ann, palabras_ann,ubicacion_ann,persona_ann, organizacion_ann))
 k <- sapply(annot.l1$features, `[[`, "kind")
 ```
 
 ### Personas que aparecen en la noticia
 ```{r}
-personas = noticia1[annot.l1[k == "person"]]
-lugares = noticia1[annot.l1[k == "location"]]
-org = noticia1[annot.l1[k == "organization"]]
+personas = noticia[annot.l1[k == "person"]]
+lugares = noticia[annot.l1[k == "location"]]
+org = noticia[annot.l1[k == "organization"]]
 ```
 
 
