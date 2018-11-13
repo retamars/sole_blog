@@ -7,6 +7,6 @@ permalink: /about/
 Para contactarme
 
 
-### Contact
+### Contacto
 
 [soledad.retamar@gmail.com](mailto:soledad.retamar@gmail.com)
