@@ -143,14 +143,7 @@ k <- sapply(annot.l1$features, `[[`, "kind")
 {% highlight r %}
 personas = noticia[annot.l1[k == "person"]]
 {% endhighlight %}
- 
 Los nombres propios que se encontraron en la noticia son:
-
-{% highlight r %}
-personas
-{% endhighlight %}
-
-
 
 {% highlight text %}
 ## [1] "Donald Trump"           "Emmanuel Macron"       
@@ -162,14 +155,7 @@ personas
 {% highlight r %}
 lugares = noticia[annot.l1[k == "location"]]
 {% endhighlight %}
- 
 Si vizualizamos los lugares que detectó en la noticia obtendremos:
-
-{% highlight r %}
-lugares
-{% endhighlight %}
-
-
 
 {% highlight text %}
 ## [1] "Europa"  "China"   "París"  "Berlín" "Francia" "París"
