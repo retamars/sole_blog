@@ -4,9 +4,9 @@ title: About
 permalink: /about/
 ---
 
-Para contactarme
+Para contactarnos
 
 
-### Contact
+### Contacto
 
 [soledad.retamar@gmail.com](mailto:soledad.retamar@gmail.com)
