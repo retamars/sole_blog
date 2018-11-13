@@ -8,7 +8,7 @@ draft: false
 tags: entidades
 ---
  
-```{r setup, include=FALSE} knitr::opts_chunk$set(echo = FALSE)
+```{r setup, include=FALSE, echo=FALSE} knitr::opts_chunk$set(echo = FALSE)
 ```
  
 ## Detección de oraciones y palabras
@@ -49,6 +49,12 @@ Podemos aplicar estas funciones a nuestros datos utilizando la función annotate
 
 {% highlight r %}
 noticia1_annotations <- annotate(noticia, list(oracion_ann, palabras_ann))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in as.data.frame.default(x[[i]], optional = TRUE): cannot coerce class 'c("Simple_Sent_Token_Annotator", "Annotator")' to a data.frame
 {% endhighlight %}
 El objeto creado contiene ahora un objeto que contiene una lista de oraciones y de palabras identificadas por posición. 
 
@@ -171,11 +177,5 @@ Si vemos las organizaciones:
 ## [4] "Francia"          "EEUU"
 {% endhighlight %}
  
-
-{% highlight r %}
-plot(pressure)
-{% endhighlight %}
-
-![plot of chunk pressure](/figures/pressure-1.png)
  
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+ 

@@ -8,7 +8,7 @@ draft: false
 tags: entidades
 ---
 
-```{r setup, include=FALSE} knitr::opts_chunk$set(echo = FALSE)
+```{r setup, include=FALSE, echo=FALSE} knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Detección de oraciones y palabras
@@ -119,8 +119,5 @@ Si vemos las organizaciones:
 org
 ```
 
-```{r pressure, echo=TRUE}
-plot(pressure)
-```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
