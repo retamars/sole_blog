@@ -8,7 +8,6 @@ draft: false
 tags: entidades
 ---
  
- 
 ```{r setup, include=FALSE} knitr::opts_chunk$set(echo = TRUE)
 ```
  
@@ -29,15 +28,22 @@ library(RWeka)
 library(qdap)
 library(magrittr)
  
-noticia <- as.String('Donald Trump apuntó este martes contra el presidente francés, Emmanuel Macron, por su propuesta de crear un ejército europeo, en un nuevo reclamo hacia sus aliados europeos para que refuercen su aporte económico hacia el financiamiento de la OTAN.
- 
-Macron declaró la semana pasada la necesidad de proteger con unas fuerzas armadas a Europa, "en relación a China, Rusia e incluso Estados Unidos", una idea que Trump calificó el viernes como "insultante". Ahora, renovó su rechazo con un mordaz comentario, reabriendo heridas entre París y Berlín, hoy estrechos aliados y defensores del multilateralismo.
- 
-"Fue Alemania en la Primera y Segunda Guerra Mundial. ¿Cómo funcionó eso para Francia? Ellos estaban comenzando a aprender alemán en París antes de que EEUU intervenga", escribió en su Twitter, en referencia a la ocupación nazi sobre la capital francesa, entre 1940 y 1944.')
+noticia <- as.String('Donald Trump apuntó este martes contra el presidente francés, 
+Emmanuel Macron, por su propuesta de crear un ejército europeo, en un nuevo reclamo 
+hacia sus aliados europeos para que refuercen su aporte económico hacia el 
+financiamiento de la OTAN.
+Macron declaró la semana pasada la necesidad de proteger con unas fuerzas armadas 
+a Europa,"en relación a China, Rusia e incluso Estados Unidos", una idea que Trump
+calificó el viernes como "insultante". Ahora, renovó su rechazo con un mordaz 
+comentario, reabriendo heridas entre París y Berlín, hoy estrechos aliados y 
+defensores del multilateralismo.
+"Fue Alemania en la Primera y Segunda Guerra Mundial. ¿Cómo funcionó eso para Francia?
+Ellos estaban comenzando a aprender alemán en París antes de que EEUU intervenga", 
+escribió en su Twitter, en referencia a la ocupación nazi sobre la capital francesa, 
+entre 1940 y 1944.')
 {% endhighlight %}
  
 ## Anotadores
- 
 Luego necesitamos crear anotadores para palabras y oraciones. 
 Los anotadores se crean mediante funciones que cargan las bibliotecas de Java subyacentes. Estas funciones luego marcan los lugares en la cadena donde las palabras y oraciones comienzan y terminan. 
 Las funciones de anotación son creadas por funciones.
@@ -73,7 +79,7 @@ noti_doc <- AnnotatedPlainTextDocument(noticia, noticia1_annotations)
 Ahora podemos extraer información de nuestro documento utilizando funciones de acceso como sents() para obtener las oraciones y words() para obtener las palabras. 
 
 {% highlight r %}
-sents(noti_doc) %>% head(2)
+sents(noti_doc) %>% head(1)
 {% endhighlight %}
 
 
@@ -90,19 +96,7 @@ sents(noti_doc) %>% head(2)
 ## [29] "aliados"        "europeos"       "para"           "que"           
 ## [33] "refuercen"      "su"             "aporte"         "económico"    
 ## [37] "hacia"          "el"             "financiamiento" "de"            
-## [41] "la"             "OTAN."         
-## 
-## [[2]]
-##  [1] "Macron"         "declaró"       "la"             "semana"        
-##  [5] "pasada"         "la"             "necesidad"      "de"            
-##  [9] "proteger"       "con"            "unas"           "fuerzas"       
-## [13] "armadas"        "a"              "Europa"         ","             
-## [17] "\"en"           "relación"      "a"              "China"         
-## [21] ","              "Rusia"          "e"              "incluso"       
-## [25] "Estados"        "Unidos\""       ","              "una"           
-## [29] "idea"           "que"            "Trump"          "calificó"     
-## [33] "el"             "viernes"        "como"           "\"insultante\""
-## [37] "."
+## [41] "la"             "OTAN."
 {% endhighlight %}
 
 
@@ -118,9 +112,9 @@ words(noti_doc) %>% head(10)
 ##  [6] "contra"     "el"         "presidente" "francés"   ","
 {% endhighlight %}
  
-# Anotando personas y lugares.
+# Identificando personas y lugares.
 Entre los varios tipos de anotadores proporcionados por el paquete openNLP se encuentra un anotador de entidad.
-Una entidad es b?sicamente un nombre propio, como una persona o un nombre de lugar.
+Una entidad es basicamente un nombre propio, como una persona o un nombre de lugar.
 Usando una técnica llamada reconocimiento de entidad nombrada (NER), podemos extraer varios tipos de nombres de un documento. En inglés, OpenNLP puede encontrar fechas, ubicaciones, dinero, organizaciones, porcentajes, personas y horarios. (Los valores aceptados son "date", "location", "money", "organization", "percentage", "person", "misc".)
 Estos tipos de funciones se crean utilizando los mismos tipos de funciones de constructor que usamos para words() y sents().
  
@@ -136,7 +130,11 @@ Anteriormente pasamos una lista de funciones de anotador a la función annotate(
  
 
 {% highlight r %}
-annot.l1 = NLP::annotate(noticia, list(oracion_ann, palabras_ann,ubicacion_ann,persona_ann, organizacion_ann))
+annot.l1 = NLP::annotate(noticia, list(oracion_ann, 
+                                      palabras_ann,
+                                      ubicacion_ann,
+                                      persona_ann, 
+                                      organizacion_ann))
 k <- sapply(annot.l1$features, `[[`, "kind")
 {% endhighlight %}
  
@@ -185,17 +183,10 @@ org = noticia[annot.l1[k == "organization"]]
  
 Si vemos las organizaciones:
 
-{% highlight r %}
-org
-{% endhighlight %}
-
-
-
 {% highlight text %}
 ## [1] "China"            "Rusia"            "Estados Unidos\""
 ## [4] "Francia"          "EEUU"
 {% endhighlight %}
- 
  
 
 {% highlight r %}
