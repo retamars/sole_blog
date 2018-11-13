@@ -27,86 +27,13 @@ library(openNLP)
 library(rJava)
 library(RWeka)
 library(qdap)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Loading required package: qdapDictionaries
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Loading required package: qdapRegex
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Loading required package: qdapTools
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Loading required package: RColorBrewer
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## 
-## Attaching package: 'qdap'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:NLP':
-## 
-##     ngrams
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:base':
-## 
-##     Filter
-{% endhighlight %}
-
-
-
-{% highlight r %}
 library(magrittr)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## 
-## Attaching package: 'magrittr'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:qdap':
-## 
-##     %>%
-{% endhighlight %}
-
-
-
-{% highlight r %}
-noticia <- as.String(news[[2]]$body)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in news[[2]]: object of type 'closure' is not subsettable
+ 
+noticia <- as.String('Donald Trump apuntó este martes contra el presidente francés, Emmanuel Macron, por su propuesta de crear un ejército europeo, en un nuevo reclamo hacia sus aliados europeos para que refuercen su aporte económico hacia el financiamiento de la OTAN.
+ 
+Macron declaró la semana pasada la necesidad de proteger con unas fuerzas armadas a Europa, "en relación a China, Rusia e incluso Estados Unidos", una idea que Trump calificó el viernes como "insultante". Ahora, renovó su rechazo con un mordaz comentario, reabriendo heridas entre París y Berlín, hoy estrechos aliados y defensores del multilateralismo.
+ 
+"Fue Alemania en la Primera y Segunda Guerra Mundial. ¿Cómo funcionó eso para Francia? Ellos estaban comenzando a aprender alemán en París antes de que EEUU intervenga", escribió en su Twitter, en referencia a la ocupación nazi sobre la capital francesa, entre 1940 y 1944.')
 {% endhighlight %}
  
 ## Anotadores
@@ -130,12 +57,6 @@ Podemos aplicar estas funciones de anotador a nuestros datos utilizando la funci
 {% highlight r %}
 noticia1_annotations <- annotate(noticia, list(oracion_ann, palabras_ann))
 {% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in as.String(s): object 'noticia' not found
-{% endhighlight %}
  
 Vemos que el objeto de anotación contiene una lista de oraciones (y también palabras) identificadas por posición. Es decir, la primera oración en el documento comienza en el caracter 1 y termina en el caracter 111. 
 Las oraciones también contienen información sobre las posiciones de las palabras que las componen.
@@ -146,12 +67,6 @@ Si quisiéramos, también podríamos asociar metadatos con el objeto usando el a
 
 {% highlight r %}
 noti_doc <- AnnotatedPlainTextDocument(noticia, noticia1_annotations)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in as.String(s): object 'noticia' not found
 {% endhighlight %}
  
 # Palabras y oraciones
@@ -164,7 +79,30 @@ sents(noti_doc) %>% head(2)
 
 
 {% highlight text %}
-## Error in sents(noti_doc): object 'noti_doc' not found
+## [[1]]
+##  [1] "Donald"         "Trump"          "apuntó"        "este"          
+##  [5] "martes"         "contra"         "el"             "presidente"    
+##  [9] "francés"       ","              "Emmanuel"       "Macron"        
+## [13] ","              "por"            "su"             "propuesta"     
+## [17] "de"             "crear"          "un"             "ejército"     
+## [21] "europeo"        ","              "en"             "un"            
+## [25] "nuevo"          "reclamo"        "hacia"          "sus"           
+## [29] "aliados"        "europeos"       "para"           "que"           
+## [33] "refuercen"      "su"             "aporte"         "económico"    
+## [37] "hacia"          "el"             "financiamiento" "de"            
+## [41] "la"             "OTAN."         
+## 
+## [[2]]
+##  [1] "Macron"         "declaró"       "la"             "semana"        
+##  [5] "pasada"         "la"             "necesidad"      "de"            
+##  [9] "proteger"       "con"            "unas"           "fuerzas"       
+## [13] "armadas"        "a"              "Europa"         ","             
+## [17] "\"en"           "relación"      "a"              "China"         
+## [21] ","              "Rusia"          "e"              "incluso"       
+## [25] "Estados"        "Unidos\""       ","              "una"           
+## [29] "idea"           "que"            "Trump"          "calificó"     
+## [33] "el"             "viernes"        "como"           "\"insultante\""
+## [37] "."
 {% endhighlight %}
 
 
@@ -176,7 +114,8 @@ words(noti_doc) %>% head(10)
 
 
 {% highlight text %}
-## Error in words(noti_doc): object 'noti_doc' not found
+##  [1] "Donald"     "Trump"      "apuntó"    "este"       "martes"    
+##  [6] "contra"     "el"         "presidente" "francés"   ","
 {% endhighlight %}
  
 # Anotando personas y lugares.
