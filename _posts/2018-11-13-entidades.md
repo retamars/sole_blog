@@ -27,79 +27,8 @@ library(openNLP)
 library(rJava)
 library(RWeka)
 library(qdap)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Loading required package: qdapDictionaries
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Loading required package: qdapRegex
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Loading required package: qdapTools
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Loading required package: RColorBrewer
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## 
-## Attaching package: 'qdap'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:NLP':
-## 
-##     ngrams
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:base':
-## 
-##     Filter
-{% endhighlight %}
-
-
-
-{% highlight r %}
 library(magrittr)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## 
-## Attaching package: 'magrittr'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:qdap':
-## 
-##     %>%
-{% endhighlight %}
-
-
-
-{% highlight r %}
+ 
 noticia <- as.String('Donald Trump apuntó este martes contra el presidente francés, Emmanuel Macron, por su propuesta de crear un ejército europeo, en un nuevo reclamo hacia sus aliados europeos para que refuercen su aporte económico hacia el financiamiento de la OTAN.
  
 Macron declaró la semana pasada la necesidad de proteger con unas fuerzas armadas a Europa, "en relación a China, Rusia e incluso Estados Unidos", una idea que Trump calificó el viernes como "insultante". Ahora, renovó su rechazo con un mordaz comentario, reabriendo heridas entre París y Berlín, hoy estrechos aliados y defensores del multilateralismo.
@@ -215,7 +144,11 @@ k <- sapply(annot.l1$features, `[[`, "kind")
 
 {% highlight r %}
 personas = noticia[annot.l1[k == "person"]]
+{% endhighlight %}
  
+Los nombres propios que se encontraron en la noticia son:
+
+{% highlight r %}
 personas
 {% endhighlight %}
 
@@ -230,7 +163,11 @@ personas
 
 {% highlight r %}
 lugares = noticia[annot.l1[k == "location"]]
+{% endhighlight %}
  
+Si vizualizamos los lugares que detectó en la noticia obtendremos:
+
+{% highlight r %}
 lugares
 {% endhighlight %}
 
@@ -244,7 +181,11 @@ lugares
 
 {% highlight r %}
 org = noticia[annot.l1[k == "organization"]]
+{% endhighlight %}
  
+Si vemos las organizaciones:
+
+{% highlight r %}
 org
 {% endhighlight %}
 
