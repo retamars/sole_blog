@@ -131,6 +131,12 @@ persona_ann <- Maxent_Entity_Annotator(language ="es", kind = "person")
 ubicacion_ann <- Maxent_Entity_Annotator(language ="es", kind = "location")
 organizacion_ann <- Maxent_Entity_Annotator(language ="es", kind = "organization")
 {% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in .jnew("opennlp.tools.namefind.TokenNameFinderModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: Java heap space
+{% endhighlight %}
  
 Crearemos una nueva lista para mantener nuestros anotadores en el orden en que queremos aplicarlos
  
@@ -141,7 +147,24 @@ annot.l1 = NLP::annotate(noticia, list(oracion_ann,
                                       ubicacion_ann,
                                       persona_ann, 
                                       organizacion_ann))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in as.Annotator_Pipeline(f): object 'organizacion_ann' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 k <- sapply(annot.l1$features, `[[`, "kind")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in lapply(X = X, FUN = FUN, ...): object 'annot.l1' not found
 {% endhighlight %}
  
 ### Personas que aparecen en la noticia
@@ -149,11 +172,16 @@ k <- sapply(annot.l1$features, `[[`, "kind")
 {% highlight r %}
 personas = noticia[annot.l1[k == "person"]]
 {% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in is.Span(i): object 'annot.l1' not found
+{% endhighlight %}
 Los nombres propios que se encontraron en la noticia son:
 
 {% highlight text %}
-## [1] "Donald Trump"           "Emmanuel Macron"       
-## [3] "Trump"                  "Segunda Guerra Mundial"
+## Error in eval(expr, envir, enclos): object 'personas' not found
 {% endhighlight %}
  
 ### Lugares
@@ -161,10 +189,16 @@ Los nombres propios que se encontraron en la noticia son:
 {% highlight r %}
 lugares = noticia[annot.l1[k == "location"]]
 {% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in is.Span(i): object 'annot.l1' not found
+{% endhighlight %}
 Si vizualizamos los lugares que detectó en la noticia obtendremos:
 
 {% highlight text %}
-## [1] "Europa"  "China"   "París"  "Berlín" "Francia" "París"
+## Error in eval(expr, envir, enclos): object 'lugares' not found
 {% endhighlight %}
  
 ### Organizaciones
@@ -172,12 +206,17 @@ Si vizualizamos los lugares que detectó en la noticia obtendremos:
 {% highlight r %}
 org = noticia[annot.l1[k == "organization"]]
 {% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in is.Span(i): object 'annot.l1' not found
+{% endhighlight %}
  
 Si vemos las organizaciones:
 
 {% highlight text %}
-## [1] "China"            "Rusia"            "Estados Unidos\""
-## [4] "Francia"          "EEUU"
+## Error in eval(expr, envir, enclos): object 'org' not found
 {% endhighlight %}
  
 

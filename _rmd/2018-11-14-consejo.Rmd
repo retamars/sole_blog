@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Análisis de textos
+title: Analisis de textos
 author: Soledad Retamar
 published: true
 status: process
 draft: false
-tags: consejo
+tags: consejo2
 ---
 
 ```{r setup} knitr::opts_chunk$set(echo = FALSE)

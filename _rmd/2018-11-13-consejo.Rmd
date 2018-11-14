@@ -6,10 +6,10 @@ published: true
 status: process
 draft: false
 tags: consejo
+
 # Opcional
 permalink: /consejo/
-sitemap: false
-comments: false
+
 ---
 
 ```{r setup} knitr::opts_chunk$set(echo = FALSE)
