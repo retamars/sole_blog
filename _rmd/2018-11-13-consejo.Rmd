@@ -6,8 +6,6 @@ published: true
 status: process
 draft: false
 tags: consejo
-
-
 ---
 
 ```{r setup} knitr::opts_chunk$set(echo = FALSE)
@@ -40,97 +38,29 @@ library(tm)
 library(wordcloud)
 library(ggplot2)
 
-
-
 actas_CS <-   read.csv("data\\actas.csv", sep="\t", stringsAsFactors=FALSE, encoding="latin1" )
 names(actas_CS) <- c("archivo","anio", "nro", "reunion", "lugar", "txt")
 
 ```
 
-## Palabras y Oraciones
-Necesitaremos definir dos funciones, basadas en librer铆as de Java, que nos marcar谩n donde comienza y termina cada palabra y cada oracion.
-```{r}
-palabras_ann <- Maxent_Word_Token_Annotator()
-oracion_ann <- Maxent_Sent_Token_Annotator()
-```
-Llamaremos iterativamente a estas funciones para el texto contenido en noticia para determinar primero d贸nde est谩n las oraciones y luego determinar d贸nde est谩n las palabras. 
-Podemos aplicar estas funciones a nuestros datos utilizando la funci贸n annotate().
-```{r}
-noticia1_annotations <- annotate(noticia, list(oracion_ann, palabras_ann))
-```
-El objeto creado contiene ahora un objeto que contiene una lista de oraciones y de palabras identificadas por posici贸n. 
+### Cantidad de Reuniones por A駉
+En primer lugar analizaremos cuantas actas por a駉 se recuperaron, que ser韆 equivalente a la cantidad de reuniones llevadas a cabo
+
 ```{r, echo=FALSE}
-noticia1_annotations[1:8]
+reuniones <- actas_CS[actas_CS$anio != "2005" & actas_CS$anio != "3.pd" & actas_CS$anio != "AU20" & !is.na(actas_CS$anio),] %>% 
+            count(anio, reunion, sort = TRUE) %>% 
+            group_by(anio)
+anios <- as.data.frame(reuniones$anio, reuniones$re)
+names(anios)<-"anio"
+
+Freuniones<- ggplot(anios, aes(x=as.factor(anios$anio), 
+    fill = as.numeric(anios$anio))) + 
+  geom_bar(position='dodge', show.legend = FALSE) + 
+  xlab("Anio") + 
+  ylab("Cantidad") + 
+  scale_x_discrete("A駉s" ) + 
+  theme_minimal() +
+  ggtitle("Reuniones de CS UTN")
+Freuniones
+
 ```
-En nuestro ejemplo, la primera oraci贸n en el documento comienza en el caracter 1 y termina en el caracter 250. En el caso de la primer palabra detectada sus posicion inicial es 1 y finaliza en el caracter 6.
-
-Para combinar la noticia y el objeto creado con las posiciones usaremos la funci贸n AnnotatedPlainTextDocument del paquete NLP. Si quisi茅ramos, tambi茅n podr铆amos asociar metadatos con el objeto usando el argumento "meta".
-```{r}
-noti_doc <- AnnotatedPlainTextDocument(noticia, noticia1_annotations)
-```
-
-# Palabras y oraciones
-Ahora podemos extraer informaci贸n de nuestro documento utilizando las funciones sents() para obtener las oraciones y words() para obtener las palabras. Mostraremos la primer oraci贸n y las primeras 10 palabras:
-
-```{r}
-sents(noti_doc) %>% head(1)
-words(noti_doc) %>% head(10)
-```
-
-# Identificando personas y lugares.
-Entre los distintos tipos de anotadores proporcionados por el paquete openNLP se encuentra uno de entidades.
-Una entidad es basicamente un nombre propio, como una persona o un nombre de lugar.
-
-Usando una t茅cnica llamada reconocimiento de entidad nombrada (NER), podemos extraer varios tipos de nombres de un documento. 
-Crearemos las funciones para detectar tres tipos de entidades: personas, ubicaciones y organizaciones.
-
-```{r}
-persona_ann <- Maxent_Entity_Annotator(language ="es", kind = "person")
-ubicacion_ann <- Maxent_Entity_Annotator(language ="es", kind = "location")
-organizacion_ann <- Maxent_Entity_Annotator(language ="es", kind = "organization")
-```
-
-Crearemos una nueva lista para mantener nuestros anotadores en el orden en que queremos aplicarlos
-
-```{r}
-annot.l1 = NLP::annotate(noticia, list(oracion_ann, 
-                                      palabras_ann,
-                                      ubicacion_ann,
-                                      persona_ann, 
-                                      organizacion_ann))
-k <- sapply(annot.l1$features, `[[`, "kind")
-```
-
-### Personas que aparecen en la noticia
-```{r}
-personas = noticia[annot.l1[k == "person"]]
-```
-Los nombres propios que se encontraron en la noticia son:
-```{r, echo=FALSE}
-personas
-```
-
-### Lugares
-```{r}
-lugares = noticia[annot.l1[k == "location"]]
-```
-Si vizualizamos los lugares que detect贸 en la noticia obtendremos:
-```{r, echo=FALSE}
-lugares
-```
-
-### Organizaciones
-```{r}
-org = noticia[annot.l1[k == "organization"]]
-```
-
-Si vemos las organizaciones:
-```{r, echo=FALSE}
-org
-```
-
-```{r pressure, echo=TRUE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
