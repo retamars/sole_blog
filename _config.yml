@@ -40,22 +40,24 @@ google_analytics:
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
 #url: https://retamars.github.io/sole_blog
-url: https://retamars.github.io
+url: 
+#https://retamars.github.io
 
 # If you're hosting your site at a Project repository on GitHub pages 
 # (http://yourusername.github.io/repository-name)
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
 
-baseurl: "/sole_blog"
+baseurl: ""
+#"/sole_blog"
 
 #
 # !! You don't need to change any of the configuration flags below !!
 #
 
 markdown: kramdown
-#highlighter: pygments
-highlighter: rouge
+highlighter: pygments
+#highlighter: rouge
 permalink: /:title/
 
 # The release of Jekyll Now that you're using
@@ -80,4 +82,4 @@ exclude:
     - LICENSE
     - README.md
 
-theme: jekyll-theme-architect
+#theme: jekyll-theme-architect
