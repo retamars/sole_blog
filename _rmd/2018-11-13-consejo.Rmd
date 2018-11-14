@@ -6,6 +6,10 @@ published: true
 status: process
 draft: false
 tags: consejo
+# Opcional
+permalink: /consejo/
+sitemap: false
+comments: false
 ---
 
 ```{r setup} knitr::opts_chunk$set(echo = FALSE)
@@ -38,9 +42,9 @@ library(tm)
 library(wordcloud)
 library(ggplot2)
 
-source("functions.R")
 
-actas_CS <-   read.csv("data\\actas.csv", sep="\t", stringsAsFactors=FALSE, encoding="latin1" )
+
+actas_CS <-   read.csv("..\\data\\actas.csv", sep="\t", stringsAsFactors=FALSE, encoding="latin1" )
 names(actas_CS) <- c("archivo","anio", "nro", "reunion", "lugar", "txt")
 
 ```
