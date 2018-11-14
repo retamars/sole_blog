@@ -44,7 +44,7 @@ library(ggplot2)
 
 
 
-actas_CS <-   read.csv("..\\data\\actas.csv", sep="\t", stringsAsFactors=FALSE, encoding="latin1" )
+actas_CS <-   read.csv("data\\actas.csv", sep="\t", stringsAsFactors=FALSE, encoding="latin1" )
 names(actas_CS) <- c("archivo","anio", "nro", "reunion", "lugar", "txt")
 
 ```
