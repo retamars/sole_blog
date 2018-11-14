@@ -42,24 +42,7 @@ Necesitaremos definir dos funciones, basadas en librerías de Java, que nos marc
 
 {% highlight r %}
 palabras_ann <- Maxent_Word_Token_Annotator()
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in .jnew("opennlp.tools.tokenize.TokenizerModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: Java heap space
-{% endhighlight %}
-
-
-
-{% highlight r %}
 oracion_ann <- Maxent_Sent_Token_Annotator()
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in .jnew("opennlp.tools.sentdetect.SentenceModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: GC overhead limit exceeded
 {% endhighlight %}
 Llamaremos iterativamente a estas funciones para el texto contenido en noticia para determinar primero dónde están las oraciones y luego determinar dónde están las palabras. 
 Podemos aplicar estas funciones a nuestros datos utilizando la función annotate().
@@ -67,22 +50,16 @@ Podemos aplicar estas funciones a nuestros datos utilizando la función annotate
 {% highlight r %}
 noticia1_annotations <- annotate(noticia, list(oracion_ann, palabras_ann))
 {% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in as.data.frame.default(x[[i]], optional = TRUE): cannot coerce class 'c("Simple_Sent_Token_Annotator", "Annotator")' to a data.frame
-{% endhighlight %}
 El objeto creado contiene ahora un objeto que contiene una lista de oraciones y de palabras identificadas por posición. 
 
 {% highlight text %}
 ##  id type     start end features
-##   1 sentence     1 250 constituents=<<integer,42>>
-##   2 sentence   252 455 constituents=<<integer,37>>
-##   3 sentence   457 606 constituents=<<integer,25>>
-##   4 sentence   608 660 constituents=<<integer,11>>
-##   5 sentence   662 693 constituents=<<integer,6>>
-##   6 sentence   695 882 constituents=<<integer,35>>
+##   1 sentence     1 254 constituents=<<integer,42>>
+##   2 sentence   256 462 constituents=<<integer,37>>
+##   3 sentence   464 616 constituents=<<integer,25>>
+##   4 sentence   618 670 constituents=<<integer,11>>
+##   5 sentence   672 706 constituents=<<integer,6>>
+##   6 sentence   708 899 constituents=<<integer,35>>
 ##   7 word         1   6 
 ##   8 word         8  12
 {% endhighlight %}
@@ -106,20 +83,17 @@ sents(noti_doc) %>% head(1)
 
 {% highlight text %}
 ## [[1]]
-##  [1] "Donald"          "Trump"           "apunt�"         
-##  [4] " est"            " marte"          " contr"         
-##  [7] " e"              " president"      " franc�"        
-## [10] "�"               " \nEmmanu"       "l Macr"         
-## [13] "o"               ", p"             "r "             
-## [16] "u propues"       "a "              "e cre"          
-## [19] "r "              "n ejérc"        "to euro"        
-## [22] "p"               "o,"              "en"             
-## [25] "un nu"           "vo recl"         "o \nha"         
-## [28] "ia "             "us alia"         "os europ"       
-## [31] "os p"            "ra "             "ue refuer"      
-## [34] "en"              "su apo"          "te econó"      
-## [37] "ico h"           "ci"              "el \nfinanciami"
-## [40] "nt"              " d"              " la O"
+##  [1] "Donald"         "Trump"          "apuntó"        "este"          
+##  [5] "martes"         "contra"         "el"             "presidente"    
+##  [9] "francés"       ","              "Emmanuel"       "Macron"        
+## [13] ","              "por"            "su"             "propuesta"     
+## [17] "de"             "crear"          "un"             "ejército"     
+## [21] "europeo"        ","              "en"             "un"            
+## [25] "nuevo"          "reclamo"        "hacia"          "sus"           
+## [29] "aliados"        "europeos"       "para"           "que"           
+## [33] "refuercen"      "su"             "aporte"         "económico"    
+## [37] "hacia"          "el"             "financiamiento" "de"            
+## [41] "la"             "OTAN."
 {% endhighlight %}
 
 
@@ -131,8 +105,8 @@ words(noti_doc) %>% head(10)
 
 
 {% highlight text %}
-##  [1] "Donald"     "Trump"      "apunt�"     " est"       " marte"    
-##  [6] " contr"     " e"         " president" " franc�"    "�"
+##  [1] "Donald"     "Trump"      "apuntó"    "este"       "martes"    
+##  [6] "contra"     "el"         "presidente" "francés"   ","
 {% endhighlight %}
  
 # Identificando personas y lugares.
@@ -145,36 +119,8 @@ Crearemos las funciones para detectar tres tipos de entidades: personas, ubicaci
 
 {% highlight r %}
 persona_ann <- Maxent_Entity_Annotator(language ="es", kind = "person")
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in .jnew("opennlp.tools.namefind.TokenNameFinderModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: GC overhead limit exceeded
-{% endhighlight %}
-
-
-
-{% highlight r %}
 ubicacion_ann <- Maxent_Entity_Annotator(language ="es", kind = "location")
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in .jnew("opennlp.tools.namefind.TokenNameFinderModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: GC overhead limit exceeded
-{% endhighlight %}
-
-
-
-{% highlight r %}
 organizacion_ann <- Maxent_Entity_Annotator(language ="es", kind = "organization")
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in .jnew("opennlp.tools.namefind.TokenNameFinderModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: GC overhead limit exceeded
 {% endhighlight %}
  
 Crearemos una nueva lista para mantener nuestros anotadores en el orden en que queremos aplicarlos
@@ -186,24 +132,7 @@ annot.l1 = NLP::annotate(noticia, list(oracion_ann,
                                       ubicacion_ann,
                                       persona_ann, 
                                       organizacion_ann))
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in as.Annotator_Pipeline(f): object 'ubicacion_ann' not found
-{% endhighlight %}
-
-
-
-{% highlight r %}
 k <- sapply(annot.l1$features, `[[`, "kind")
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in lapply(X = X, FUN = FUN, ...): object 'annot.l1' not found
 {% endhighlight %}
  
 ### Personas que aparecen en la noticia
@@ -211,16 +140,11 @@ k <- sapply(annot.l1$features, `[[`, "kind")
 {% highlight r %}
 personas = noticia[annot.l1[k == "person"]]
 {% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in is.Span(i): object 'annot.l1' not found
-{% endhighlight %}
 Los nombres propios que se encontraron en la noticia son:
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'personas' not found
+## [1] "Donald Trump"           "Emmanuel Macron"       
+## [3] "Trump"                  "Segunda Guerra Mundial"
 {% endhighlight %}
  
 ### Lugares
@@ -228,16 +152,10 @@ Los nombres propios que se encontraron en la noticia son:
 {% highlight r %}
 lugares = noticia[annot.l1[k == "location"]]
 {% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in is.Span(i): object 'annot.l1' not found
-{% endhighlight %}
 Si vizualizamos los lugares que detectó en la noticia obtendremos:
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'lugares' not found
+## [1] "Europa"  "China"   "París"  "Berlín" "Francia" "París"
 {% endhighlight %}
  
 ### Organizaciones
@@ -245,17 +163,12 @@ Si vizualizamos los lugares que detectó en la noticia obtendremos:
 {% highlight r %}
 org = noticia[annot.l1[k == "organization"]]
 {% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in is.Span(i): object 'annot.l1' not found
-{% endhighlight %}
  
 Si vemos las organizaciones:
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'org' not found
+## [1] "China"            "Rusia"            "Estados Unidos\""
+## [4] "Francia"          "EEUU"
 {% endhighlight %}
  
 
