@@ -4,4 +4,4 @@ title: Index
 permalink: /index/
 ---
 
-Aca irÃ­a algo
+Aca iría algo
