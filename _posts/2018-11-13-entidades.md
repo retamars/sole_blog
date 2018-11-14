@@ -42,6 +42,17 @@ Necesitaremos definir dos funciones, basadas en librerías de Java, que nos marc
 
 {% highlight r %}
 palabras_ann <- Maxent_Word_Token_Annotator()
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in .jnew("opennlp.tools.tokenize.TokenizerModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: GC overhead limit exceeded
+{% endhighlight %}
+
+
+
+{% highlight r %}
 oracion_ann <- Maxent_Sent_Token_Annotator()
 {% endhighlight %}
 Llamaremos iterativamente a estas funciones para el texto contenido en noticia para determinar primero dónde están las oraciones y luego determinar dónde están las palabras. 
@@ -128,8 +139,36 @@ Crearemos las funciones para detectar tres tipos de entidades: personas, ubicaci
 
 {% highlight r %}
 persona_ann <- Maxent_Entity_Annotator(language ="es", kind = "person")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in .jnew("opennlp.tools.namefind.TokenNameFinderModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: Java heap space
+{% endhighlight %}
+
+
+
+{% highlight r %}
 ubicacion_ann <- Maxent_Entity_Annotator(language ="es", kind = "location")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in .jnew("opennlp.tools.namefind.TokenNameFinderModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: GC overhead limit exceeded
+{% endhighlight %}
+
+
+
+{% highlight r %}
 organizacion_ann <- Maxent_Entity_Annotator(language ="es", kind = "organization")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in .jnew("opennlp.tools.namefind.TokenNameFinderModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: Java heap space
 {% endhighlight %}
  
 Crearemos una nueva lista para mantener nuestros anotadores en el orden en que queremos aplicarlos
@@ -141,6 +180,17 @@ annot.l1 = NLP::annotate(noticia, list(oracion_ann,
                                       ubicacion_ann,
                                       persona_ann, 
                                       organizacion_ann))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in .jcall(ref, "[Lopennlp/tools/util/Span;", "find", .jarray(x)): java.lang.OutOfMemoryError: GC overhead limit exceeded
+{% endhighlight %}
+
+
+
+{% highlight r %}
 k <- sapply(annot.l1$features, `[[`, "kind")
 {% endhighlight %}
  

@@ -7,8 +7,6 @@ status: process
 draft: false
 tags: consejo
 
-# Opcional
-permalink: /consejo/
 
 ---
 
