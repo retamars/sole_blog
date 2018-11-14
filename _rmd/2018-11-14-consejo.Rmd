@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Analisis de textos
+title: Análisis de textos
 author: Soledad Retamar
 published: true
 status: process
