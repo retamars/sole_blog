@@ -54,7 +54,8 @@ baseurl: "/sole_blog"
 #
 
 markdown: kramdown
-highlighter: pygments
+#highlighter: pygments
+highlighter: rouge
 permalink: /:title/
 
 # The release of Jekyll Now that you're using
