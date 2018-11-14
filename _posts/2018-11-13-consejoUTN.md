@@ -19,99 +19,6 @@ Los paquetes necesarios serán: NLP, openNLP y magrittr
  
 
 {% highlight text %}
-## Loading required package: xml2
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## 
-## Attaching package: 'rvest'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:purrr':
-## 
-##     pluck
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:qdap':
-## 
-##     %>%
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## 
-## Attaching package: 'readr'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:rvest':
-## 
-##     guess_encoding
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## -- Attaching packages ---------------------------------- tidyverse 1.2.1 --
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## v forcats 0.3.0
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## -- Conflicts ------------------------------------- tidyverse_conflicts() --
-## x ggplot2::%+%()          masks qdapRegex::%+%()
-## x ggplot2::annotate()     masks NLP::annotate()
-## x dplyr::explain()        masks qdapRegex::explain()
-## x tidyr::extract()        masks magrittr::extract()
-## x dplyr::filter()         masks stats::filter()
-## x readr::guess_encoding() masks rvest::guess_encoding()
-## x dplyr::id()             masks qdapTools::id()
-## x dplyr::lag()            masks stats::lag()
-## x rvest::pluck()          masks purrr::pluck()
-## x purrr::set_names()      masks magrittr::set_names()
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## 
-## Attaching package: 'tau'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:readr':
-## 
-##     tokenize
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Loading required package: viridisLite
-{% endhighlight %}
-
-
-
-{% highlight text %}
 ## Warning in file(filename, "r", encoding = encoding): cannot open file
 ## 'functions.R': No such file or directory
 {% endhighlight %}
@@ -120,6 +27,19 @@ Los paquetes necesarios serán: NLP, openNLP y magrittr
 
 {% highlight text %}
 ## Error in file(filename, "r", encoding = encoding): cannot open the connection
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Warning in file(file, "rt"): cannot open file 'data\actas.csv': No such
+## file or directory
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in file(file, "rt"): cannot open the connection
 {% endhighlight %}
  
 ## Palabras y Oraciones
