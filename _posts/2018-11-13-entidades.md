@@ -47,7 +47,7 @@ palabras_ann <- Maxent_Word_Token_Annotator()
 
 
 {% highlight text %}
-## Error in .jnew("opennlp.tools.tokenize.TokenizerModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: GC overhead limit exceeded
+## Error in .jnew("opennlp.tools.tokenize.TokenizerModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: Java heap space.jnew("opennlp.tools.tokenize.TokenizerModel", .jcast(.jnew("java.io.FileInputStream", model), "java.io.InputStream"))new("jobjRef", jobj = <pointer: 0x0000000038c46ac8>, jclass = "java/lang/OutOfMemoryError")
 {% endhighlight %}
 
 
@@ -59,7 +59,7 @@ oracion_ann <- Maxent_Sent_Token_Annotator()
 
 
 {% highlight text %}
-## Error in .jnew("opennlp.tools.sentdetect.SentenceModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: Java heap space
+## Error in .jnew("opennlp.tools.sentdetect.SentenceModel", .jcast(.jnew("java.io.FileInputStream", : java.lang.OutOfMemoryError: GC overhead limit exceeded
 {% endhighlight %}
 Llamaremos iterativamente a estas funciones para el texto contenido en noticia para determinar primero dónde están las oraciones y luego determinar dónde están las palabras. 
 Podemos aplicar estas funciones a nuestros datos utilizando la función annotate().
@@ -191,7 +191,7 @@ annot.l1 = NLP::annotate(noticia, list(oracion_ann,
 
 
 {% highlight text %}
-## Error in as.Annotator_Pipeline(f): object 'organizacion_ann' not found
+## Error in as.Annotator_Pipeline(f): object 'ubicacion_ann' not found
 {% endhighlight %}
 
 
