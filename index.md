@@ -1,7 +1,7 @@
 ---
 layout: blog_index
 title: Index
-permalink: /indexbrief/
+permalink: /index/
 ---
 
 Aca iría algo
