@@ -47,9 +47,13 @@ En esta oportunidad sólo importamos el archivo .csv generado:
 ### Cantidad de Reuniones por Año
 En primer lugar analizaremos cuantas actas por año se recuperaron, que sería equivalente a la cantidad de reuniones llevadas a cabo
 ```{r, echo=TRUE}
-  reuniones <- actas_CS[actas_CS$anio != "2005" & actas_CS$anio != "3.pd" & actas_CS$anio != "AU20" & !is.na(actas_CS$anio),] %>% 
+  reuniones <- actas_CS[actas_CS$anio != "2005" & 
+                        actas_CS$anio != "3.pd" & 
+                        actas_CS$anio != "AU20" & 
+                        !is.na(actas_CS$anio),] %>% 
               count(anio, reunion, sort = TRUE) %>% 
               group_by(anio)
+
   anios <- as.data.frame(reuniones$anio, reuniones$reunion)
   names(anios)<-"anio"
 
@@ -61,6 +65,9 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que sería e
     scale_x_discrete("Años" ) + 
     theme_minimal() +
     ggtitle("Reuniones de CS UTN")
-  Freuniones
+```
+### El gráfico de frecuencias de reuniones por año:
+```{r simpleplot}
+plot(Freuniones)
 ```
 
