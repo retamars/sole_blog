@@ -21,7 +21,34 @@ Los paquetes necesarios serán: NLP, openNLP y magrittr
 library(NLP)
 library(openNLP)
 library(magrittr)
- 
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## 
+## Attaching package: 'magrittr'
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## The following object is masked from 'package:tidyr':
+## 
+##     extract
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## The following object is masked from 'package:purrr':
+## 
+##     set_names
+{% endhighlight %}
+
+
+
+{% highlight r %}
 noticia <- as.String('Donald Trump apuntó este martes contra el presidente francés, 
 Emmanuel Macron, por su propuesta de crear un ejército europeo, en un nuevo reclamo 
 hacia sus aliados europeos para que refuercen su aporte económico hacia el 
@@ -50,22 +77,16 @@ Podemos aplicar estas funciones a nuestros datos utilizando la función annotate
 {% highlight r %}
 noticia1_annotations <- annotate(noticia, list(oracion_ann, palabras_ann))
 {% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in as.data.frame.default(x[[i]], optional = TRUE): cannot coerce class 'c("Simple_Sent_Token_Annotator", "Annotator")' to a data.frame
-{% endhighlight %}
 El objeto creado contiene ahora un objeto que contiene una lista de oraciones y de palabras identificadas por posición. 
 
 {% highlight text %}
 ##  id type     start end features
-##   1 sentence     1 250 constituents=<<integer,42>>
-##   2 sentence   252 455 constituents=<<integer,37>>
-##   3 sentence   457 606 constituents=<<integer,25>>
-##   4 sentence   608 660 constituents=<<integer,11>>
-##   5 sentence   662 693 constituents=<<integer,6>>
-##   6 sentence   695 882 constituents=<<integer,35>>
+##   1 sentence     1 254 constituents=<<integer,42>>
+##   2 sentence   256 462 constituents=<<integer,37>>
+##   3 sentence   464 616 constituents=<<integer,25>>
+##   4 sentence   618 670 constituents=<<integer,11>>
+##   5 sentence   672 706 constituents=<<integer,6>>
+##   6 sentence   708 899 constituents=<<integer,35>>
 ##   7 word         1   6 
 ##   8 word         8  12
 {% endhighlight %}
@@ -89,20 +110,17 @@ sents(noti_doc) %>% head(1)
 
 {% highlight text %}
 ## [[1]]
-##  [1] "Donald"          "Trump"           "apunt�"         
-##  [4] " est"            " marte"          " contr"         
-##  [7] " e"              " president"      " franc�"        
-## [10] "�"               " \nEmmanu"       "l Macr"         
-## [13] "o"               ", p"             "r "             
-## [16] "u propues"       "a "              "e cre"          
-## [19] "r "              "n ejérc"        "to euro"        
-## [22] "p"               "o,"              "en"             
-## [25] "un nu"           "vo recl"         "o \nha"         
-## [28] "ia "             "us alia"         "os europ"       
-## [31] "os p"            "ra "             "ue refuer"      
-## [34] "en"              "su apo"          "te econó"      
-## [37] "ico h"           "ci"              "el \nfinanciami"
-## [40] "nt"              " d"              " la O"
+##  [1] "Donald"         "Trump"          "apuntó"        "este"          
+##  [5] "martes"         "contra"         "el"             "presidente"    
+##  [9] "francés"       ","              "Emmanuel"       "Macron"        
+## [13] ","              "por"            "su"             "propuesta"     
+## [17] "de"             "crear"          "un"             "ejército"     
+## [21] "europeo"        ","              "en"             "un"            
+## [25] "nuevo"          "reclamo"        "hacia"          "sus"           
+## [29] "aliados"        "europeos"       "para"           "que"           
+## [33] "refuercen"      "su"             "aporte"         "económico"    
+## [37] "hacia"          "el"             "financiamiento" "de"            
+## [41] "la"             "OTAN."
 {% endhighlight %}
 
 
@@ -114,8 +132,8 @@ words(noti_doc) %>% head(10)
 
 
 {% highlight text %}
-##  [1] "Donald"     "Trump"      "apunt�"     " est"       " marte"    
-##  [6] " contr"     " e"         " president" " franc�"    "�"
+##  [1] "Donald"     "Trump"      "apuntó"    "este"       "martes"    
+##  [6] "contra"     "el"         "presidente" "francés"   ","
 {% endhighlight %}
  
 # Identificando personas y lugares.
