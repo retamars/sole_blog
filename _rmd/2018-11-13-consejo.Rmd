@@ -12,10 +12,6 @@ tags: consejo
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-```{r global_options, echo=FALSE}
-knitr::opts_chunk$set(fig.path="../figures/", message=FALSE, warning=FALSE,
-                      echo=FALSE, results="hide", fig.width=11)
-```
 
 ## Actas de reuniones del Consejo Superior de UTN
 En este post trataremos de reproducir el trabajo realizado por .
@@ -77,6 +73,7 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que sería e
 ### El gráfico de frecuencias de reuniones por año:
 ```{r simpleplot}
   Freuniones
+fig_path(suffix = ".png")
 ```
-<img src="../figures/simpleplot-1.png" title="" alt="Frecuencia de Reuniones" width="672" />
+#<img src="../figures/simpleplot-1.png" title="" alt="Frecuencia de Reuniones" width="672" />
 
