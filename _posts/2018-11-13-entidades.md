@@ -21,49 +21,49 @@ library(NLP)
 library(openNLP)
 library(magrittr)
  
-noticia <- as.String('Donald Trump apuntÃ³ este martes contra el presidente francÃ©s, 
-Emmanuel Macron, por su propuesta de crear un ejÃ©rcito europeo, en un nuevo reclamo 
-hacia sus aliados europeos para que refuercen su aporte econÃ³mico hacia el 
+noticia <- as.String('Donald Trump apuntó este martes contra el presidente francés, 
+Emmanuel Macron, por su propuesta de crear un ejército europeo, en un nuevo reclamo 
+hacia sus aliados europeos para que refuercen su aporte económico hacia el 
 financiamiento de la OTAN.
-Macron declarÃ³ la semana pasada la necesidad de proteger con unas fuerzas armadas 
-a Europa,"en relaciÃ³n a China, Rusia e incluso Estados Unidos", una idea que Trump
-calificÃ³ el viernes como "insultante". Ahora, renovÃ³ su rechazo con un mordaz 
-comentario, reabriendo heridas entre ParÃ?s y BerlÃ?n, hoy estrechos aliados y 
+Macron declaró la semana pasada la necesidad de proteger con unas fuerzas armadas 
+a Europa,"en relación a China, Rusia e incluso Estados Unidos", una idea que Trump
+calificó el viernes como "insultante". Ahora, renovó su rechazo con un mordaz 
+comentario, reabriendo heridas entre París y Berlín, hoy estrechos aliados y 
 defensores del multilateralismo.
-"Fue Alemania en la Primera y Segunda Guerra Mundial. Â¿CÃ³mo funcionÃ³ eso para Francia?
-Ellos estaban comenzando a aprender alemÃ¡n en ParÃ?s antes de que EEUU intervenga", 
-escribiÃ³ en su Twitter, en referencia a la ocupaciÃ³n nazi sobre la capital francesa, 
-entre 1940 y 1944.')
+"Fue Alemania en la Primera y Segunda Guerra Mundial. ¿Cómo funcionó eso para Francia?
+Ellos estaban comenzando a aprender alemán en París antes de que EEUU intervenga", 
+escribió en su Twitter, en referencia a la ocupación nazi sobre la capital francesa, entre 1940 y 1944.')
 {% endhighlight %}
  
 ## Palabras y Oraciones
-Necesitaremos definir dos funciones, basadas en librerÃ?as de Java, que nos marcarÃ¡n donde comienza y termina cada palabra y cada oracion.
+Necesitaremos definir dos funciones, basadas en librerías de Java, que nos marcarán donde comienza y termina cada palabra y cada oración.
 
 {% highlight r %}
 palabras_ann <- Maxent_Word_Token_Annotator()
 oracion_ann <- Maxent_Sent_Token_Annotator()
 {% endhighlight %}
-Llamaremos iterativamente a estas funciones para el texto contenido en noticia para determinar primero dÃ³nde estÃ¡n las oraciones y luego determinar dÃ³nde estÃ¡n las palabras. 
-Podemos aplicar estas funciones a nuestros datos utilizando la funciÃ³n annotate().
+Aplicaremos iterativamente estas funciones en el texto de la noticia para determinar en primer lugar dónde están las oraciones y luego determinar dónde están las palabras. 
+Podemos aplicar estas funciones a nuestros datos utilizando la función annotate().
 
 {% highlight r %}
 noticia1_annotations <- annotate(noticia, list(oracion_ann, palabras_ann))
 {% endhighlight %}
-El objeto creado contiene ahora un objeto que contiene una lista de oraciones y de palabras identificadas por posiciÃ³n. 
+El objeto creado contiene ahora una lista de oraciones y de palabras identificadas por posición. 
 
 {% highlight r %}
 noticia1_annotations[1:8]
 {% endhighlight %}
-En nuestro ejemplo, la primera oraciÃ³n en el documento comienza en el caracter 1 y termina en el caracter 250. En el caso de la primer palabra detectada sus posicion inicial es 1 y finaliza en el caracter 6.
+En nuestro ejemplo, la primera oración en el documento comienza en el caracter 1 y termina en el caracter 250. En el caso de la primer palabra detectada sus posicion inicial es 1 y finaliza en el caracter 6.
  
-Para combinar la noticia y el objeto creado con las posiciones usaremos la funciÃ³n AnnotatedPlainTextDocument del paquete NLP. Si quisiÃ©ramos, tambiÃ©n podrÃ?amos asociar metadatos con el objeto usando el argumento "meta".
+Para combinar la noticia y el objeto creado con las posiciones usaremos la función AnnotatedPlainTextDocument del paquete NLP. Si quisiéramos, también podríamos asociar metadatos con el objeto usando el argumento "meta".
+ 
 
 {% highlight r %}
 noti_doc <- AnnotatedPlainTextDocument(noticia, noticia1_annotations)
 {% endhighlight %}
  
 # Palabras y oraciones
-Ahora podemos extraer informaciÃ³n de nuestro documento utilizando las funciones sents() para obtener las oraciones y words() para obtener las palabras. Mostraremos la primer oraciÃ³n y las primeras 10 palabras:
+Ahora podemos extraer información de nuestro documento utilizando las funciones sents() para obtener las oraciones y words() para obtener las palabras. Mostraremos la primer oración y las primeras 10 palabras:
  
 
 {% highlight r %}
@@ -75,7 +75,7 @@ words(noti_doc) %>% head(10)
 Entre los distintos tipos de anotadores proporcionados por el paquete openNLP se encuentra uno de entidades.
 Una entidad es basicamente un nombre propio, como una persona o un nombre de lugar.
  
-Usando una tÃ©cnica llamada reconocimiento de entidad nombrada (NER), podemos extraer varios tipos de nombres de un documento. 
+Usando una técnica llamada reconocimiento de entidad nombrada (NER), podemos extraer varios tipos de nombres de un documento. 
 Crearemos las funciones para detectar tres tipos de entidades: personas, ubicaciones y organizaciones.
  
 
@@ -103,8 +103,7 @@ k <- sapply(annot.l1$features, `[[`, "kind")
 personas = noticia[annot.l1[k == "person"]]
 {% endhighlight %}
 Los nombres propios que se encontraron en la noticia son:
-[1] "Donald Trump"           "Emmanuel Macron"       
-[3] "Trump"                  "Segunda Guerra Mundial"
+[1] "Emmanuel Macron"        "Segunda Guerra Mundial"
  
 ### Lugares
 
@@ -112,10 +111,7 @@ Los nombres propios que se encontraron en la noticia son:
 lugares = noticia[annot.l1[k == "location"]]
 {% endhighlight %}
 Si vizualizamos los lugares que detectÃ³ en la noticia obtendremos:
-
-{% highlight text %}
-## [1] "Europa"  "China"   "Francia"
-{% endhighlight %}
+[1] "Europa"  "Francia" "París"  
  
 ### Organizaciones
 
@@ -124,11 +120,8 @@ org = noticia[annot.l1[k == "organization"]]
 {% endhighlight %}
  
 Si vemos las organizaciones:
-
-{% highlight text %}
-## [1] "China"            "Rusia"            "Estados Unidos\""
-## [4] "Francia"          "EEUU"
-{% endhighlight %}
+[1] "China"            "Rusia"            "Estados Unidos\""
+[4] "Francia"          "EEUU"            
  
  
  
