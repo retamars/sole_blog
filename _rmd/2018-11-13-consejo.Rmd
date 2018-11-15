@@ -12,6 +12,11 @@ tags: consejo
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+```{r global_options, echo=FALSE}
+knitr::opts_chunk$set(fig.path="figures/", message=FALSE, warning=FALSE,
+                      echo=FALSE, results="hide", fig.width=11)
+```
+
 ## Actas de reuniones del Consejo Superior de UTN
 En este post trataremos de reproducir el trabajo realizado por .
 

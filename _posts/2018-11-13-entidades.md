@@ -8,8 +8,7 @@ draft: false
 tags: entidades
 ---
  
-```{r setup, include=FALSE, echo=FALSE} knitr::opts_chunk$set(echo = FALSE)
-```
+
  
 ## Detección de oraciones y palabras
 Con estas lineas de código describiremos como detectar oraciones, palabras, personas, lugares y organizaciones en un texto. Para realizarlo mas práctico en este ejemplo analizaremos una noticia extraída y asignaremos el texto en el código, pero se podría aplicar al texto que obtengamos dinamicamente de nuestras fuentes de datos.
@@ -21,34 +20,7 @@ Los paquetes necesarios serán: NLP, openNLP y magrittr
 library(NLP)
 library(openNLP)
 library(magrittr)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## 
-## Attaching package: 'magrittr'
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:tidyr':
-## 
-##     extract
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## The following object is masked from 'package:purrr':
-## 
-##     set_names
-{% endhighlight %}
-
-
-
-{% highlight r %}
+ 
 noticia <- as.String('Donald Trump apuntó este martes contra el presidente francés, 
 Emmanuel Macron, por su propuesta de crear un ejército europeo, en un nuevo reclamo 
 hacia sus aliados europeos para que refuercen su aporte económico hacia el 
