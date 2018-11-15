@@ -13,7 +13,7 @@ tags: consejo
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ```{r global_options, echo=FALSE}
-knitr::opts_chunk$set(fig.path="sole_blog/figures/", message=FALSE, warning=FALSE,
+knitr::opts_chunk$set(fig.path="../figures/", message=FALSE, warning=FALSE,
                       echo=FALSE, results="hide", fig.width=11)
 ```
 
@@ -68,9 +68,9 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que sería e
   Freuniones<- ggplot(anios, aes(x=as.factor(anios$anio), 
       fill = as.numeric(anios$anio))) + 
     geom_bar(position='dodge', show.legend = FALSE) + 
-    xlab("Año") + 
+    xlab("A�o") + 
     ylab("Cantidad") + 
-    scale_x_discrete("Años" ) + 
+    scale_x_discrete("A�os" ) + 
     theme_minimal() +
     ggtitle("Reuniones de CS UTN")
 ```
@@ -78,5 +78,5 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que sería e
 ```{r simpleplot}
   Freuniones
 ```
-<img src="./figures/simpleplot-1.png" title="" alt="Frecuencia de Reuniones" width="672" />
+<img src="../figures/simpleplot-1.png" title="" alt="Frecuencia de Reuniones" width="672" />
 
