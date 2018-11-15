@@ -13,7 +13,7 @@ tags: consejo
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ```{r global_options, echo=FALSE}
-knitr::opts_chunk$set(fig.path="figures/", message=FALSE, warning=FALSE,
+knitr::opts_chunk$set(fig.path="sole_blog/figures/", message=FALSE, warning=FALSE,
                       echo=FALSE, results="hide", fig.width=11)
 ```
 
