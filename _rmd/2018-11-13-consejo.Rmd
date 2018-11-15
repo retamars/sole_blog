@@ -15,9 +15,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Actas de reuniones del Consejo Superior de UTN
 En este post trataremos de reproducir el trabajo realizado por .
 
-En este caso hemos tomado lactas de reuniones del Consejo Superior de los √∫ltimos 10 a√±os.
-Los paquetes necesarios ser√°n: NLP, openNLP y magrittr
-En primer lugar ejecutamos la funci√≥n para extraer el texto de las actas, actualmente almacenadas en archivos .pdf. Ese post se puede ver en: ENLACE
+En este caso hemos tomado lactas de reuniones del Consejo Superior de los ˙ltimos 10 aÒos.
+Los paquetes necesarios son: NLP, openNLP y magrittr
+En primer lugar ejecutamos la funciÛn para extraer el texto de las actas, actualmente almacenadas en archivos .pdf. Ese post se puede ver en: ENLACE
 ```{r, echo=FALSE, message=FALSE, warning=FALSE,results="hide"}
   library(pdftools)
   library(rvest)
@@ -39,7 +39,7 @@ En primer lugar ejecutamos la funci√≥n para extraer el texto de las actas, actua
   library(ggplot2)
 ```
 
-En esta oportunidad s√≥lo importamos el archivo .csv generado:
+En esta oportunidad solo importamos el archivo .csv generado:
 ```{r, echo=TRUE}
   actas_CS <-   read.csv("data\\actas.csv", 
                           sep="\t", stringsAsFactors=FALSE, 
@@ -47,8 +47,8 @@ En esta oportunidad s√≥lo importamos el archivo .csv generado:
   names(actas_CS) <- c("archivo","anio", "nro", "reunion", "lugar", "txt")
 ```
 
-### Cantidad de Reuniones por A√±o
-En primer lugar analizaremos cuantas actas por a√±o se recuperaron, que ser√≠a equivalente a la cantidad de reuniones llevadas a cabo
+### Cantidad de Reuniones por AÒo
+En primer lugar analizaremos cuantas actas por aÒo se recuperaron, que serÌa equivalente a la cantidad de reuniones llevadas a cabo
 ```{r, echo=TRUE}
   reuniones <- actas_CS[actas_CS$anio != "2005" & 
                         actas_CS$anio != "3.pd" & 
@@ -69,10 +69,10 @@ En primer lugar analizaremos cuantas actas por a√±o se recuperaron, que ser√≠a e
     theme_minimal() +
     ggtitle("Reuniones de CS UTN")
 ```
-### El gr√°fico de frecuencias de reuniones por a√±o:
+### El gr·fico de frecuencias de reuniones por aÒo:
 
 ```{r, fig.show='asis'}
-plot(Freuniones)
+  plot(Freuniones)
 ```
 
 
