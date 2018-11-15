@@ -23,7 +23,7 @@ En este post trataremos de reproducir el trabajo realizado por .
 En este caso hemos tomado lactas de reuniones del Consejo Superior de los últimos 10 años.
 Los paquetes necesarios serán: NLP, openNLP y magrittr
 En primer lugar ejecutamos la función para extraer el texto de las actas, actualmente almacenadas en archivos .pdf. Ese post se puede ver en: ENLACE
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE,results="hide"}
   library(pdftools)
   library(rvest)
   library(readr)
@@ -76,7 +76,7 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que sería e
 ```
 ### El gráfico de frecuencias de reuniones por año:
 ```{r simpleplot}
-  plot(Freuniones)
+  Freuniones
 ```
 
 

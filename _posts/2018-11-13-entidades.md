@@ -51,17 +51,6 @@ noticia1_annotations <- annotate(noticia, list(oracion_ann, palabras_ann))
 {% endhighlight %}
 El objeto creado contiene ahora un objeto que contiene una lista de oraciones y de palabras identificadas por posición. 
 
-{% highlight text %}
-##  id type     start end features
-##   1 sentence     1 254 constituents=<<integer,42>>
-##   2 sentence   256 462 constituents=<<integer,37>>
-##   3 sentence   464 616 constituents=<<integer,25>>
-##   4 sentence   618 670 constituents=<<integer,11>>
-##   5 sentence   672 706 constituents=<<integer,6>>
-##   6 sentence   708 899 constituents=<<integer,35>>
-##   7 word         1   6 
-##   8 word         8  12
-{% endhighlight %}
 En nuestro ejemplo, la primera oración en el documento comienza en el caracter 1 y termina en el caracter 250. En el caso de la primer palabra detectada sus posicion inicial es 1 y finaliza en el caracter 6.
  
 Para combinar la noticia y el objeto creado con las posiciones usaremos la función AnnotatedPlainTextDocument del paquete NLP. Si quisiéramos, también podríamos asociar metadatos con el objeto usando el argumento "meta".
@@ -76,36 +65,7 @@ Ahora podemos extraer información de nuestro documento utilizando las funciones
 
 {% highlight r %}
 sents(noti_doc) %>% head(1)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## [[1]]
-##  [1] "Donald"         "Trump"          "apuntó"        "este"          
-##  [5] "martes"         "contra"         "el"             "presidente"    
-##  [9] "francés"       ","              "Emmanuel"       "Macron"        
-## [13] ","              "por"            "su"             "propuesta"     
-## [17] "de"             "crear"          "un"             "ejército"     
-## [21] "europeo"        ","              "en"             "un"            
-## [25] "nuevo"          "reclamo"        "hacia"          "sus"           
-## [29] "aliados"        "europeos"       "para"           "que"           
-## [33] "refuercen"      "su"             "aporte"         "económico"    
-## [37] "hacia"          "el"             "financiamiento" "de"            
-## [41] "la"             "OTAN."
-{% endhighlight %}
-
-
-
-{% highlight r %}
 words(noti_doc) %>% head(10)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-##  [1] "Donald"     "Trump"      "apuntó"    "este"       "martes"    
-##  [6] "contra"     "el"         "presidente" "francés"   ","
 {% endhighlight %}
  
 # Identificando personas y lugares.
@@ -141,10 +101,6 @@ personas = noticia[annot.l1[k == "person"]]
 {% endhighlight %}
 Los nombres propios que se encontraron en la noticia son:
 
-{% highlight text %}
-## [1] "Donald Trump"           "Emmanuel Macron"       
-## [3] "Trump"                  "Segunda Guerra Mundial"
-{% endhighlight %}
  
 ### Lugares
 
@@ -153,9 +109,6 @@ lugares = noticia[annot.l1[k == "location"]]
 {% endhighlight %}
 Si vizualizamos los lugares que detectó en la noticia obtendremos:
 
-{% highlight text %}
-## [1] "Europa"  "China"   "París"  "Berlín" "Francia" "París"
-{% endhighlight %}
  
 ### Organizaciones
 
@@ -165,10 +118,6 @@ org = noticia[annot.l1[k == "organization"]]
  
 Si vemos las organizaciones:
 
-{% highlight text %}
-## [1] "China"            "Rusia"            "Estados Unidos\""
-## [4] "Francia"          "EEUU"
-{% endhighlight %}
  
  
  
