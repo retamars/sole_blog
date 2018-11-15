@@ -10,8 +10,9 @@ tags: entidades
  
 
  
+ 
 ## Detecci√≥n de oraciones y palabras
-Con estas lineas de c√≥digo describiremos como detectar oraciones, palabras, personas, lugares y organizaciones en un texto. Para realizarlo mas pr√°ctico en este ejemplo analizaremos una noticia extra√?da y asignaremos el texto en el c√≥digo, pero se podr√?a aplicar al texto que obtengamos dinamicamente de nuestras fuentes de datos.
+Con estas lineas de c√≥digo describiremos como detectar oraciones, palabras, personas, lugares y organizaciones en un texto. Para realizarlo mas pr√°ctico en este ejemplo analizaremos una noticia extra√???da y asignaremos el texto en el c√≥digo, pero se podr√???a aplicar al texto que obtengamos dinamicamente de nuestras fuentes de datos.
  
 Los paquetes necesarios ser√°n: NLP, openNLP y magrittr
  
@@ -42,6 +43,7 @@ Necesitaremos definir dos funciones, basadas en librerÌas de Java, que nos marca
 palabras_ann <- Maxent_Word_Token_Annotator()
 oracion_ann <- Maxent_Sent_Token_Annotator()
 {% endhighlight %}
+ 
 Aplicaremos iterativamente estas funciones en el texto de la noticia para determinar en primer lugar dÛnde est·n las oraciones y luego determinar dÛnde est·n las palabras. 
 Podemos aplicar estas funciones a nuestros datos utilizando la funciÛn annotate().
 
@@ -52,6 +54,20 @@ El objeto creado contiene ahora una lista de oraciones y de palabras identificad
 
 {% highlight r %}
 noticia1_annotations[1:8]
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##  id type     start end features
+##   1 sentence     1 250 constituents=<<integer,42>>
+##   2 sentence   252 455 constituents=<<integer,37>>
+##   3 sentence   457 606 constituents=<<integer,25>>
+##   4 sentence   608 660 constituents=<<integer,11>>
+##   5 sentence   662 693 constituents=<<integer,6>>
+##   6 sentence   695 881 constituents=<<integer,35>>
+##   7 word         1   6 
+##   8 word         8  12
 {% endhighlight %}
 En nuestro ejemplo, la primera oraciÛn en el documento comienza en el caracter 1 y termina en el caracter 250. En el caso de la primer palabra detectada sus posicion inicial es 1 y finaliza en el caracter 6.
  
@@ -68,7 +84,36 @@ Ahora podemos extraer informaciÛn de nuestro documento utilizando las funciones 
 
 {% highlight r %}
 sents(noti_doc) %>% head(1)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [[1]]
+##  [1] "Donald"         "Trump"          "apuntÛ"         "este"          
+##  [5] "martes"         "contra"         "el"             "presidente"    
+##  [9] "francÈs"        ","              "Emmanuel"       "Macron"        
+## [13] ","              "por"            "su"             "propuesta"     
+## [17] "de"             "crear"          "un"             "ejÈrcito"      
+## [21] "europeo"        ","              "en"             "un"            
+## [25] "nuevo"          "reclamo"        "hacia"          "sus"           
+## [29] "aliados"        "europeos"       "para"           "que"           
+## [33] "refuercen"      "su"             "aporte"         "econÛmico"     
+## [37] "hacia"          "el"             "financiamiento" "de"            
+## [41] "la"             "OTAN."
+{% endhighlight %}
+
+
+
+{% highlight r %}
 words(noti_doc) %>% head(10)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##  [1] "Donald"     "Trump"      "apuntÛ"     "este"       "martes"    
+##  [6] "contra"     "el"         "presidente" "francÈs"    ","
 {% endhighlight %}
  
 # Identificando personas y lugares.
@@ -103,15 +148,34 @@ k <- sapply(annot.l1$features, `[[`, "kind")
 personas = noticia[annot.l1[k == "person"]]
 {% endhighlight %}
 Los nombres propios que se encontraron en la noticia son:
-[1] "Emmanuel Macron"        "Segunda Guerra Mundial"
+
+{% highlight r %}
+personas
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] "Emmanuel Macron"        "Segunda Guerra Mundial"
+{% endhighlight %}
  
 ### Lugares
 
 {% highlight r %}
 lugares = noticia[annot.l1[k == "location"]]
 {% endhighlight %}
+ 
 Si vizualizamos los lugares que detect√≥ en la noticia obtendremos:
-[1] "Europa"  "Francia" "ParÌs"  
+
+{% highlight r %}
+lugares
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] "Europa"  "Francia" "ParÌs"
+{% endhighlight %}
  
 ### Organizaciones
 
@@ -120,8 +184,15 @@ org = noticia[annot.l1[k == "organization"]]
 {% endhighlight %}
  
 Si vemos las organizaciones:
-[1] "China"            "Rusia"            "Estados Unidos\""
-[4] "Francia"          "EEUU"            
- 
- 
- 
+
+{% highlight r %}
+org
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [1] "China"            "Rusia"            "Estados Unidos\""
+## [4] "Francia"          "EEUU"
+{% endhighlight %}
+Lo que podriamos hacer con los lugares es geocodificarlos

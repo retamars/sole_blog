@@ -71,7 +71,7 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que sería equ
 ```
 ### El gráfico de frecuencias de reuniones por año:
 
-```{r, fig.show='asis'}
+```{r}
   plot(Freuniones)
 ```
 

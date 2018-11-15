@@ -8,12 +8,13 @@ draft: false
 tags: entidades
 ---
 
-```{r setup} 
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
 ## Detecci√≥n de oraciones y palabras
-Con estas lineas de c√≥digo describiremos como detectar oraciones, palabras, personas, lugares y organizaciones en un texto. Para realizarlo mas pr√°ctico en este ejemplo analizaremos una noticia extra√?da y asignaremos el texto en el c√≥digo, pero se podr√?a aplicar al texto que obtengamos dinamicamente de nuestras fuentes de datos.
+Con estas lineas de c√≥digo describiremos como detectar oraciones, palabras, personas, lugares y organizaciones en un texto. Para realizarlo mas pr√°ctico en este ejemplo analizaremos una noticia extra√???da y asignaremos el texto en el c√≥digo, pero se podr√???a aplicar al texto que obtengamos dinamicamente de nuestras fuentes de datos.
 
 Los paquetes necesarios ser√°n: NLP, openNLP y magrittr
 
@@ -34,7 +35,6 @@ defensores del multilateralismo.
 "Fue Alemania en la Primera y Segunda Guerra Mundial. øCÛmo funcionÛ eso para Francia?
 Ellos estaban comenzando a aprender alem·n en ParÌs antes de que EEUU intervenga", 
 escribiÛ en su Twitter, en referencia a la ocupaciÛn nazi sobre la capital francesa, entre 1940 y 1944.')
-
 ```
 
 ## Palabras y Oraciones
@@ -43,6 +43,7 @@ Necesitaremos definir dos funciones, basadas en librerÌas de Java, que nos marca
 palabras_ann <- Maxent_Word_Token_Annotator()
 oracion_ann <- Maxent_Sent_Token_Annotator()
 ```
+
 Aplicaremos iterativamente estas funciones en el texto de la noticia para determinar en primer lugar dÛnde est·n las oraciones y luego determinar dÛnde est·n las palabras. 
 Podemos aplicar estas funciones a nuestros datos utilizando la funciÛn annotate().
 ```{r, echo=TRUE}
@@ -63,7 +64,7 @@ noti_doc <- AnnotatedPlainTextDocument(noticia, noticia1_annotations)
 # Palabras y oraciones
 Ahora podemos extraer informaciÛn de nuestro documento utilizando las funciones sents() para obtener las oraciones y words() para obtener las palabras. Mostraremos la primer oraciÛn y las primeras 10 palabras:
 
-```{r}
+```{r, echo=TRUE}
 sents(noti_doc) %>% head(1)
 words(noti_doc) %>% head(10)
 ```
@@ -75,7 +76,7 @@ Una entidad es basicamente un nombre propio, como una persona o un nombre de lug
 Usando una tÈcnica llamada reconocimiento de entidad nombrada (NER), podemos extraer varios tipos de nombres de un documento. 
 Crearemos las funciones para detectar tres tipos de entidades: personas, ubicaciones y organizaciones.
 
-```{r}
+```{r, echo=TRUE}
 persona_ann <- Maxent_Entity_Annotator(language ="es", kind = "person")
 ubicacion_ann <- Maxent_Entity_Annotator(language ="es", kind = "location")
 organizacion_ann <- Maxent_Entity_Annotator(language ="es", kind = "organization")
@@ -83,7 +84,7 @@ organizacion_ann <- Maxent_Entity_Annotator(language ="es", kind = "organization
 
 Crearemos una nueva lista para mantener nuestros anotadores en el orden en que queremos aplicarlos
 
-```{r}
+```{r, echo=TRUE}
 annot.l1 = NLP::annotate(noticia, list(oracion_ann, 
                                       palabras_ann,
                                       ubicacion_ann,
@@ -93,32 +94,31 @@ k <- sapply(annot.l1$features, `[[`, "kind")
 ```
 
 ### Personas que aparecen en la noticia
-```{r}
+```{r, echo=TRUE}
 personas = noticia[annot.l1[k == "person"]]
 ```
 Los nombres propios que se encontraron en la noticia son:
-```{r, echo=FALSE, results='asis'}
+```{r, echo=TRUE}
 personas
 ```
 
 ### Lugares
-```{r}
+```{r, echo=TRUE}
 lugares = noticia[annot.l1[k == "location"]]
 ```
+
 Si vizualizamos los lugares que detect√≥ en la noticia obtendremos:
-```{r, echo=FALSE, results='asis'}
+```{r, echo=TRUE}
 lugares
 ```
 
 ### Organizaciones
-```{r}
+```{r, echo=TRUE}
 org = noticia[annot.l1[k == "organization"]]
 ```
 
 Si vemos las organizaciones:
-```{r, echo=FALSE, results='asis'}
+```{r, echo=TRUE}
 org
 ```
-
-
-
+Lo que podriamos hacer con los lugares es geocodificarlos
