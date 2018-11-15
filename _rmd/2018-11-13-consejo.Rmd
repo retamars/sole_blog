@@ -2,7 +2,7 @@
 layout: post
 title: Analisis de textos
 author: Soledad Retamar
-published: true
+published: false
 status: process
 draft: false
 tags: consejo
@@ -43,8 +43,8 @@ names(actas_CS) <- c("archivo","anio", "nro", "reunion", "lugar", "txt")
 
 ```
 
-### Cantidad de Reuniones por Año
-En primer lugar analizaremos cuantas actas por año se recuperaron, que sería equivalente a la cantidad de reuniones llevadas a cabo
+### Cantidad de Reuniones por A?o
+En primer lugar analizaremos cuantas actas por a?o se recuperaron, que ser?a equivalente a la cantidad de reuniones llevadas a cabo
 
 ```{r, echo=FALSE}
 reuniones <- actas_CS[actas_CS$anio != "2005" & actas_CS$anio != "3.pd" & actas_CS$anio != "AU20" & !is.na(actas_CS$anio),] %>% 
@@ -58,7 +58,7 @@ Freuniones<- ggplot(anios, aes(x=as.factor(anios$anio),
   geom_bar(position='dodge', show.legend = FALSE) + 
   xlab("Anio") + 
   ylab("Cantidad") + 
-  scale_x_discrete("Años" ) + 
+  scale_x_discrete("A?os" ) + 
   theme_minimal() +
   ggtitle("Reuniones de CS UTN")
 Freuniones
