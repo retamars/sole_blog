@@ -87,7 +87,6 @@ vacias<-as.data.frame(c(stopwords(kind="es"),
           readLines("data\\stopwords_utn.txt", encoding="ASCII-Latin")))
 names(vacias) <- "palabra"
 
-
 actas <- actas_CS %>%
   group_by(anio) %>% 
   mutate(linea = row_number()) %>% 
@@ -109,8 +108,6 @@ actas_tokenizadas %>%
        subtitle = "Palabra más frecuente por año",
        x = "palabra",
        y = "veces hallada")
-
-
 
 actas_tokenizadas %>% 
   group_by(reunion) %>% 
