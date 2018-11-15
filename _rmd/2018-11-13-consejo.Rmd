@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Analisis de textos
+title: Actas CS UTN
 author: Soledad Retamar
 published: false
 status: process
@@ -43,22 +43,22 @@ names(actas_CS) <- c("archivo","anio", "nro", "reunion", "lugar", "txt")
 
 ```
 
-### Cantidad de Reuniones por A?o
+### Cantidad de Reuniones por Año
 En primer lugar analizaremos cuantas actas por a?o se recuperaron, que ser?a equivalente a la cantidad de reuniones llevadas a cabo
 
 ```{r, echo=FALSE}
 reuniones <- actas_CS[actas_CS$anio != "2005" & actas_CS$anio != "3.pd" & actas_CS$anio != "AU20" & !is.na(actas_CS$anio),] %>% 
             count(anio, reunion, sort = TRUE) %>% 
             group_by(anio)
-anios <- as.data.frame(reuniones$anio, reuniones$re)
+anios <- as.data.frame(reuniones$anio, reuniones$reunion)
 names(anios)<-"anio"
 
 Freuniones<- ggplot(anios, aes(x=as.factor(anios$anio), 
     fill = as.numeric(anios$anio))) + 
   geom_bar(position='dodge', show.legend = FALSE) + 
-  xlab("Anio") + 
+  xlab("Año") + 
   ylab("Cantidad") + 
-  scale_x_discrete("A?os" ) + 
+  scale_x_discrete("Años" ) + 
   theme_minimal() +
   ggtitle("Reuniones de CS UTN")
 Freuniones
