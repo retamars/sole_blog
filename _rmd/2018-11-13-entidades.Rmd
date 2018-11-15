@@ -8,11 +8,12 @@ draft: false
 tags: entidades
 ---
 
-```{r setup} knitr::opts_chunk$set(echo = FALSE)
+```{r setup} 
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Detección de oraciones y palabras
-Con estas lineas de código describiremos como detectar oraciones, palabras, personas, lugares y organizaciones en un texto. Para realizarlo mas práctico en este ejemplo analizaremos una noticia extraída y asignaremos el texto en el código, pero se podría aplicar al texto que obtengamos dinamicamente de nuestras fuentes de datos.
+Con estas lineas de código describiremos como detectar oraciones, palabras, personas, lugares y organizaciones en un texto. Para realizarlo mas práctico en este ejemplo analizaremos una noticia extra�?da y asignaremos el texto en el código, pero se podr�?a aplicar al texto que obtengamos dinamicamente de nuestras fuentes de datos.
 
 Los paquetes necesarios serán: NLP, openNLP y magrittr
 
@@ -28,17 +29,17 @@ financiamiento de la OTAN.
 Macron declaró la semana pasada la necesidad de proteger con unas fuerzas armadas 
 a Europa,"en relación a China, Rusia e incluso Estados Unidos", una idea que Trump
 calificó el viernes como "insultante". Ahora, renovó su rechazo con un mordaz 
-comentario, reabriendo heridas entre París y Berlín, hoy estrechos aliados y 
+comentario, reabriendo heridas entre Par�?s y Berl�?n, hoy estrechos aliados y 
 defensores del multilateralismo.
 "Fue Alemania en la Primera y Segunda Guerra Mundial. ¿Cómo funcionó eso para Francia?
-Ellos estaban comenzando a aprender alemán en París antes de que EEUU intervenga", 
+Ellos estaban comenzando a aprender alemán en Par�?s antes de que EEUU intervenga", 
 escribió en su Twitter, en referencia a la ocupación nazi sobre la capital francesa, 
 entre 1940 y 1944.')
 
 ```
 
 ## Palabras y Oraciones
-Necesitaremos definir dos funciones, basadas en librerías de Java, que nos marcarán donde comienza y termina cada palabra y cada oracion.
+Necesitaremos definir dos funciones, basadas en librer�?as de Java, que nos marcarán donde comienza y termina cada palabra y cada oracion.
 ```{r}
 palabras_ann <- Maxent_Word_Token_Annotator()
 oracion_ann <- Maxent_Sent_Token_Annotator()
@@ -54,7 +55,7 @@ noticia1_annotations[1:8]
 ```
 En nuestro ejemplo, la primera oración en el documento comienza en el caracter 1 y termina en el caracter 250. En el caso de la primer palabra detectada sus posicion inicial es 1 y finaliza en el caracter 6.
 
-Para combinar la noticia y el objeto creado con las posiciones usaremos la función AnnotatedPlainTextDocument del paquete NLP. Si quisiéramos, también podríamos asociar metadatos con el objeto usando el argumento "meta".
+Para combinar la noticia y el objeto creado con las posiciones usaremos la función AnnotatedPlainTextDocument del paquete NLP. Si quisiéramos, también podr�?amos asociar metadatos con el objeto usando el argumento "meta".
 ```{r}
 noti_doc <- AnnotatedPlainTextDocument(noticia, noticia1_annotations)
 ```
@@ -96,7 +97,7 @@ k <- sapply(annot.l1$features, `[[`, "kind")
 personas = noticia[annot.l1[k == "person"]]
 ```
 Los nombres propios que se encontraron en la noticia son:
-```{r, echo=TRUE}
+```{r, echo=FALSE, results=TRUE}
 personas
 ```
 
@@ -105,7 +106,7 @@ personas
 lugares = noticia[annot.l1[k == "location"]]
 ```
 Si vizualizamos los lugares que detectó en la noticia obtendremos:
-```{r, echo=TRUE}
+```{r, echo=FALSE, results=TRUE}
 lugares
 ```
 
@@ -115,7 +116,7 @@ org = noticia[annot.l1[k == "organization"]]
 ```
 
 Si vemos las organizaciones:
-```{r, echo=TRUE}
+```{r, echo=FALSE, results=TRUE}
 org
 ```
 
