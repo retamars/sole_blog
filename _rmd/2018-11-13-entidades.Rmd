@@ -97,7 +97,7 @@ k <- sapply(annot.l1$features, `[[`, "kind")
 personas = noticia[annot.l1[k == "person"]]
 ```
 Los nombres propios que se encontraron en la noticia son:
-```{r, echo=FALSE, results=TRUE}
+```{r, echo=FALSE, results='asis'}
 personas
 ```
 

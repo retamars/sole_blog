@@ -103,11 +103,8 @@ k <- sapply(annot.l1$features, `[[`, "kind")
 personas = noticia[annot.l1[k == "person"]]
 {% endhighlight %}
 Los nombres propios que se encontraron en la noticia son:
-
-{% highlight text %}
-## [1] "Donald Trump"           "Emmanuel Macron"       
-## [3] "Trump"                  "Segunda Guerra Mundial"
-{% endhighlight %}
+[1] "Donald Trump"           "Emmanuel Macron"       
+[3] "Trump"                  "Segunda Guerra Mundial"
  
 ### Lugares
 
