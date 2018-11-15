@@ -3,6 +3,7 @@ layout: post
 title: Actas CS UTN
 author: Soledad Retamar
 published: false
+output: html_document
 status: process
 draft: false
 tags: consejo
@@ -40,7 +41,9 @@ En primer lugar ejecutamos la función para extraer el texto de las actas, actua
 
 En esta oportunidad sólo importamos el archivo .csv generado:
 ```{r, echo=TRUE}
-  actas_CS <-   read.csv("data\\actas.csv", sep="\t", stringsAsFactors=FALSE, encoding="latin1" )
+  actas_CS <-   read.csv("data\\actas.csv", 
+                          sep="\t", stringsAsFactors=FALSE, 
+                          encoding="latin1" )
   names(actas_CS) <- c("archivo","anio", "nro", "reunion", "lugar", "txt")
 ```
 
@@ -68,6 +71,7 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que sería e
 ```
 ### El gráfico de frecuencias de reuniones por año:
 ```{r simpleplot}
-plot(Freuniones)
+  plot(Freuniones)
 ```
+
 
