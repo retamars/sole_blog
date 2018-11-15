@@ -71,9 +71,11 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que sería e
     ggtitle("Reuniones de CS UTN")
 ```
 ### El gráfico de frecuencias de reuniones por año:
-```{r simpleplot}
-  Freuniones
-fig_path(suffix = ".png")
+
+```r
+plot(Freuniones)
 ```
-#<img src="../figures/simpleplot-1.png" title="" alt="Frecuencia de Reuniones" width="672" />
+
+![Reuniones](../figure/simpleplot.png)
+
 

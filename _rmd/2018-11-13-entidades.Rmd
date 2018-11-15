@@ -8,8 +8,7 @@ draft: false
 tags: entidades
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup} knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Detección de oraciones y palabras
