@@ -80,7 +80,7 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que sería e
 ```
 
 ## Palabras mas frecuentes por a�o
-```{r, echo=TRUE}
+```{r, echo=TRUE, warning=FALSE}
 vacias<-as.data.frame(c(stopwords(kind="es"), 
           readLines("data\\stop-words_spanish_1_es.txt", encoding="UTF-8"),
           readLines("data\\stop-words_spanish_2_es.txt", encoding="UTF-8"),
