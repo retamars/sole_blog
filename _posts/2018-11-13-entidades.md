@@ -101,6 +101,9 @@ personas = noticia[annot.l1[k == "person"]]
 {% endhighlight %}
 Los nombres propios que se encontraron en la noticia son:
 
+{% highlight r %}
+personas
+{% endhighlight %}
  
 ### Lugares
 
@@ -109,6 +112,9 @@ lugares = noticia[annot.l1[k == "location"]]
 {% endhighlight %}
 Si vizualizamos los lugares que detectó en la noticia obtendremos:
 
+{% highlight r %}
+lugares
+{% endhighlight %}
  
 ### Organizaciones
 
@@ -118,6 +124,9 @@ org = noticia[annot.l1[k == "organization"]]
  
 Si vemos las organizaciones:
 
+{% highlight r %}
+org
+{% endhighlight %}
  
  
  

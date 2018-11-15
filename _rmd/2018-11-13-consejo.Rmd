@@ -78,5 +78,5 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que sería e
 ```{r simpleplot}
   Freuniones
 ```
-
+<img src="./figures/simpleplot-1.png" title="" alt="Frecuencia de Reuniones" width="672" />
 
