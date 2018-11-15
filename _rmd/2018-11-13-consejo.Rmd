@@ -3,6 +3,7 @@ layout: post
 title: Actas CS UTN
 author: Soledad Retamar
 published: false
+output: html_document
 status: process
 draft: false
 tags: consejo
@@ -11,14 +12,18 @@ tags: consejo
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+```{r global_options, echo=FALSE}
+knitr::opts_chunk$set(fig.path="figures/", message=FALSE, warning=FALSE,
+                      echo=FALSE, results="hide", fig.width=11)
+```
 
 ## Actas de reuniones del Consejo Superior de UTN
 En este post trataremos de reproducir el trabajo realizado por .
 
-En este caso hemos tomado lactas de reuniones del Consejo Superior de los últimos 10 años.
-Los paquetes necesarios son: NLP, openNLP y magrittr
-En primer lugar ejecutamos la función para extraer el texto de las actas, actualmente almacenadas en archivos .pdf. Ese post se puede ver en: ENLACE
-```{r, echo=FALSE, message=FALSE, warning=FALSE,results="hide"}
+En este caso hemos tomado lactas de reuniones del Consejo Superior de los Ãºltimos 10 aÃ±os.
+Los paquetes necesarios serÃ¡n: NLP, openNLP y magrittr
+En primer lugar ejecutamos la funciÃ³n para extraer el texto de las actas, actualmente almacenadas en archivos .pdf. Ese post se puede ver en: ENLACE
+```{r, echo=FALSE}
   library(pdftools)
   library(rvest)
   library(readr)
@@ -39,7 +44,7 @@ En primer lugar ejecutamos la función para extraer el texto de las actas, actual
   library(ggplot2)
 ```
 
-En esta oportunidad solo importamos el archivo .csv generado:
+En esta oportunidad sÃ³lo importamos el archivo .csv generado:
 ```{r, echo=TRUE}
   actas_CS <-   read.csv("data\\actas.csv", 
                           sep="\t", stringsAsFactors=FALSE, 
@@ -47,8 +52,8 @@ En esta oportunidad solo importamos el archivo .csv generado:
   names(actas_CS) <- c("archivo","anio", "nro", "reunion", "lugar", "txt")
 ```
 
-### Cantidad de Reuniones por Año
-En primer lugar analizaremos cuantas actas por año se recuperaron, que sería equivalente a la cantidad de reuniones llevadas a cabo
+### Cantidad de Reuniones por AÃ±o
+En primer lugar analizaremos cuantas actas por aÃ±o se recuperaron, que serÃ­a equivalente a la cantidad de reuniones llevadas a cabo
 ```{r, echo=TRUE}
   reuniones <- actas_CS[actas_CS$anio != "2005" & 
                         actas_CS$anio != "3.pd" & 
@@ -63,18 +68,15 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que sería equ
   Freuniones<- ggplot(anios, aes(x=as.factor(anios$anio), 
       fill = as.numeric(anios$anio))) + 
     geom_bar(position='dodge', show.legend = FALSE) + 
-    xlab("Año") + 
+    xlab("AÃ±o") + 
     ylab("Cantidad") + 
-    scale_x_discrete("Años" ) + 
+    scale_x_discrete("AÃ±os" ) + 
     theme_minimal() +
     ggtitle("Reuniones de CS UTN")
 ```
-### El gráfico de frecuencias de reuniones por año:
-
-```{r}
+### El grÃ¡fico de frecuencias de reuniones por aÃ±o:
+```{r simpleplot}
   plot(Freuniones)
 ```
-
-
 
 
