@@ -96,21 +96,6 @@ actas <- actas_CS %>%
   ungroup()%>% 
   unnest_tokens(word, txt) 
 
-actas %>% 
-  anti_join(vacias, by = c("word" = "palabra"))
-
-actas %>% 
-  group_by(anio) %>% 
-  count(word, sort = TRUE) %>% 
-  slice(1) %>% 
-  ggplot() +
-  geom_bar(aes(x = word, weight = n, fill = word)) +
-  coord_flip(xlim=0) +
-  facet_wrap(~anio) +
-  labs(title = "Actas",
-       subtitle = "Palabra más frecuente por año",
-       x = "palabra",
-       y = "veces hallada")
 ```
 
 
