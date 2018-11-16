@@ -20,7 +20,7 @@ knitr::opts_chunk$set(fig.path="figures/", message=FALSE, warning=FALSE,
 ## Actas de reuniones del Consejo Superior de UTN
 En este post trataremos de reproducir el trabajo realizado por .
 
-En este caso hemos tomado lactas de reuniones del Consejo Superior de los últimos 10 años.
+En este caso hemos tomado las actas de reuniones del Consejo Superior de los últimos 10 años.
 Los paquetes necesarios serán: NLP, openNLP y magrittr
 En primer lugar ejecutamos la función para extraer el texto de las actas, actualmente almacenadas en archivos .pdf. Ese post se puede ver en: ENLACE
 ```{r, echo=FALSE}
@@ -77,4 +77,14 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que sería e
 ### El gráfico de frecuencias de reuniones por año:
 ```{r simpleplot, fig.path='../sole_blog/figures/'}
   plot(Freuniones)
+```
+
+## Palabras mas frecuentes por año
+```{r, echo=TRUE, warning=FALSE}
+vacias<-as.data.frame(c(stopwords(kind="es"), 
+          readLines("data\\stop-words_spanish_1_es.txt", encoding="UTF-8"),
+          readLines("data\\stop-words_spanish_2_es.txt", encoding="UTF-8"),
+          readLines("data\\stopwords_utn.txt", encoding="ASCII-Latin")))
+names(vacias) <- "palabra"
+
 ```
