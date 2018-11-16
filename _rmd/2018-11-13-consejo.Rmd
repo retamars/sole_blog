@@ -115,6 +115,6 @@ actas_tokenizadas %>%
        y = "veces hallada")
 ```
 
-```{r simpleplot, fig.path='../sole_blog/figures/'}
+```{r actasword, fig.path='../sole_blog/figures/'}
   plot(actas_tokenizadas)
 ```
