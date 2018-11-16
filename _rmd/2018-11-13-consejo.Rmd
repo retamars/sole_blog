@@ -87,17 +87,19 @@ vacias<-as.data.frame(c(stopwords(kind="es"),
           readLines("data\\stopwords_utn.txt", encoding="ASCII-Latin")))
 names(vacias) <- "palabra"
 ```
-Ahora armamos el grafico
-```{r, echo=TRUE, warning=FALSE}
 
+#### Ahora armamos el nuevo dataset
+```{r, echo=TRUE, warning=FALSE}
 actas <- actas_CS %>%
   group_by(anio) %>% 
   mutate(linea = row_number()) %>% 
   ungroup()
-
 actas_tokenizadas <- actas %>%  unnest_tokens(word, txt)
 actas_tokenizadas <- actas_tokenizadas %>% anti_join(vacias, by = c("word" = "palabra"))
-actas_tokenizadas %>% count(word, sort = TRUE)
+```
+##### Y graficamos
+```{r, echo=TRUE, warning=FALSE}
+# actas_tokenizadas %>% count(word, sort = TRUE)
 
 actas_tokenizadas %>% 
   group_by(anio) %>% 
@@ -111,5 +113,8 @@ actas_tokenizadas %>%
        subtitle = "Palabra más frecuente por año",
        x = "palabra",
        y = "veces hallada")
+```
 
+```{r simpleplot, fig.path='../sole_blog/figures/'}
+  plot(actas_tokenizadas)
 ```
