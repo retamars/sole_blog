@@ -94,7 +94,9 @@ actas <- actas_CS %>%
   group_by(anio) %>% 
   mutate(linea = row_number()) %>% 
   ungroup()%>% 
-  unnest_tokens(word, txt) %>% 
+  unnest_tokens(word, txt) 
+
+actas %>% 
   anti_join(vacias, by = c("word" = "palabra"))
 
 actas %>% 
