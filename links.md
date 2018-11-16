@@ -5,6 +5,6 @@ permalink: /links/
 ---
 
 * [Reconocimiento de entidades](https://retamars.github.io/sole_blog/entidades/)
-* Shiny App sobre Censos en CdelU
+* [Actas del Consejo Superior de UTN](https://retamars.github.io/sole_blog/consejo/)
 * Datos del Proyecto Observatorio
 * [R-bloggers](http://www.r-bloggers.com/)
