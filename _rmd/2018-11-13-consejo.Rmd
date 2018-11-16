@@ -97,9 +97,12 @@ actas <- actas_CS %>%
 actas_tokenizadas <- actas %>%  unnest_tokens(word, txt)
 actas_tokenizadas <- actas_tokenizadas %>% anti_join(vacias, by = c("word" = "palabra"))
 ```
+
 ##### Y graficamos
 ```{r, echo=TRUE, warning=FALSE}
-# actas_tokenizadas %>% count(word, sort = TRUE)
+actas_tokenizadas %>% count(word, sort = TRUE)
+
+# names(actas_tokenizadas) <- c('archivo','anio','nro','reunion','lugar','linea','word')
 
 actas_tokenizadas %>% 
   group_by(anio) %>% 
@@ -115,6 +118,6 @@ actas_tokenizadas %>%
        y = "veces hallada")
 ```
 
-```{r actasword, fig.path='../sole_blog/figures/'}
+```{r actasword, echo=FALSE, fig.path='../sole_blog/figures/'}
   plot(actas_tokenizadas)
 ```
