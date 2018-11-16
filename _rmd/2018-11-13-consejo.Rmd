@@ -97,16 +97,6 @@ actas <- actas_CS %>%
   unnest_tokens(word, txt) %>% 
   anti_join(vacias, by = c("word" = "palabra"))
 
-#actas_tokenizadas <- actas %>% 
-#  unnest_tokens(word, txt) %>% 
-#  anti_join(vacias, by = c("word" = "palabra"))
-
-```
-
-##### Y graficamos
-```{r, echo=TRUE, warning=FALSE}
-#palabras <- actas %>% count(word, sort = TRUE)
-
 actas %>% 
   group_by(anio) %>% 
   count(word, sort = TRUE) %>% 
