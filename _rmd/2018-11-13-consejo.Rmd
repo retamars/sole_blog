@@ -43,7 +43,7 @@ En primer lugar ejecutamos la función para extraer el texto de las actas, actua
 
 En esta oportunidad sólo importamos el archivo .csv generado:
 ```{r, echo=TRUE}
-  actas_CS <-   read.csv("data\\actas.csv", 
+  actas_CS <-   read.csv("..\\data\\actas.csv", 
                           sep="\t", stringsAsFactors=FALSE, 
                           encoding="latin1" )
   names(actas_CS) <- c("archivo","anio", "nro", "reunion", "lugar", "txt")
@@ -79,9 +79,9 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que ser�?a e
 ## Palabras mas frecuentes por año
 ```{r, echo=TRUE, warning=FALSE}
 vacias<-as.data.frame(c(stopwords(kind="es"), 
-          readLines("data\\stop-words_spanish_1_es.txt", encoding="UTF-8"),
-          readLines("data\\stop-words_spanish_2_es.txt", encoding="UTF-8"),
-          readLines("data\\stopwords_utn.txt", encoding="ASCII-Latin")))
+          readLines("..\\data\\stop-words_spanish_1_es.txt", encoding="UTF-8"),
+          readLines("..\\data\\stop-words_spanish_2_es.txt", encoding="UTF-8"),
+          readLines("..\\data\\stopwords_utn.txt", encoding="ASCII-Latin")))
 names(vacias) <- "palabra"
 ```
 
@@ -89,8 +89,8 @@ names(vacias) <- "palabra"
 ```{r, echo=TRUE, warning=FALSE}
 
 actas <- actas_CS %>%
-  group_by(anio) %>% 
-  mutate(linea = row_number()) %>% 
+  group_by(anio)%>% 
+  mutate(linea = row_number()) %>%
   ungroup()
 
 actas_tokenizadas <- actas %>%  unnest_tokens(word, txt)
