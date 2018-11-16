@@ -90,12 +90,26 @@ names(vacias) <- "palabra"
 
 #### Ahora armamos el nuevo dataset
 ```{r, echo=TRUE, warning=FALSE}
+
 actas <- actas_CS %>%
   group_by(anio) %>% 
   mutate(linea = row_number()) %>% 
-  ungroup()%>% 
-  unnest_tokens(word, txt) 
+  ungroup()
 
+actas_tokenizadas <- actas %>%  unnest_tokens(word, txt)
+actas_tokenizadas <- actas_tokenizadas %>% anti_join(vacias, by = c("word" = "palabra"))
+actas_tokenizadas %>% count(word, sort = TRUE)
+
+actas_tokenizadas %>% 
+  group_by(anio) %>% 
+  count(word, sort = TRUE) %>% 
+  slice(1) %>% 
+  ggplot() +
+  geom_bar(aes(x = word, weight = n, fill = word)) +
+  coord_flip() +
+  facet_wrap(~anio) +
+  labs(title = "Actas",
+       subtitle = "Palabra más frecuente por año",
+       x = "palabra",
+       y = "veces hallada")
 ```
-
-
