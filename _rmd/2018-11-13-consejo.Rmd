@@ -110,7 +110,7 @@ actas_tokenizadas %>%
   slice(1) %>% 
   ggplot() +
   geom_bar(aes(x = word, weight = n, fill = word)) +
-  coord_flip() +
+  coord_flip(xlim=0) +
   facet_wrap(~anio) +
   labs(title = "Actas",
        subtitle = "Palabra más frecuente por año",
@@ -118,6 +118,4 @@ actas_tokenizadas %>%
        y = "veces hallada")
 ```
 
-```{r actasword, echo=FALSE, fig.path='../sole_blog/figures/'}
-  plot(actas_tokenizadas)
-```
+
