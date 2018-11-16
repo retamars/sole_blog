@@ -93,18 +93,21 @@ names(vacias) <- "palabra"
 actas <- actas_CS %>%
   group_by(anio) %>% 
   mutate(linea = row_number()) %>% 
-  ungroup()
-actas_tokenizadas <- actas %>%  unnest_tokens(word, txt)
-actas_tokenizadas <- actas_tokenizadas %>% anti_join(vacias, by = c("word" = "palabra"))
+  ungroup()%>% 
+  unnest_tokens(word, txt) %>% 
+  anti_join(vacias, by = c("word" = "palabra"))
+
+#actas_tokenizadas <- actas %>% 
+#  unnest_tokens(word, txt) %>% 
+#  anti_join(vacias, by = c("word" = "palabra"))
+
 ```
 
 ##### Y graficamos
 ```{r, echo=TRUE, warning=FALSE}
-actas_tokenizadas %>% count(word, sort = TRUE)
+#palabras <- actas %>% count(word, sort = TRUE)
 
-# names(actas_tokenizadas) <- c('archivo','anio','nro','reunion','lugar','linea','word')
-
-actas_tokenizadas %>% 
+actas %>% 
   group_by(anio) %>% 
   count(word, sort = TRUE) %>% 
   slice(1) %>% 
