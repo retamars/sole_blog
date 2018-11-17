@@ -10,8 +10,9 @@ tags: consejo
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+  knitr::opts_chunk$set(echo = TRUE)
 ```
+
 
 ## Actas de reuniones del Consejo Superior de UTN
 En este post trataremos de reproducir el trabajo realizado por .
@@ -47,67 +48,3 @@ En primer lugar ejecutamos la función para extraer el texto de las actas, actua
   names(actas_CS) <- c("archivo","anio", "nro", "reunion", "lugar", "txt")
   
 ```
-
-### Cantidad de Reuniones por Año
-En primer lugar analizaremos cuantas actas por año se recuperaron, que ser�?a equivalente a la cantidad de reuniones llevadas a cabo
-```{r, echo=TRUE}
-  reuniones <- actas_CS[actas_CS$anio != "2005" & 
-                        actas_CS$anio != "3.pd" & 
-                        actas_CS$anio != "AU20" & 
-                        !is.na(actas_CS$anio),] %>% 
-              count(anio, reunion, sort = TRUE) %>% 
-              group_by(anio)
-
-  anios <- as.data.frame(reuniones$anio, reuniones$reunion)
-  names(anios)<-"anio"
-
-  Freuniones<- ggplot(anios, aes(x=as.factor(anios$anio), 
-      fill = as.numeric(anios$anio))) + 
-    geom_bar(position='dodge', show.legend = FALSE) + 
-    xlab("Año") + 
-    ylab("Cantidad") + 
-    scale_x_discrete("Años" ) + 
-    theme_minimal() +
-    ggtitle("Reuniones de CS UTN")
-```
-### El gráfico de frecuencias de reuniones por año:
-```{r simpleplot, fig.path="../sole_blog/figures/"}
-  plot(Freuniones)
-```
-
-
-## Palabras mas frecuentes por año
-```{r, echo=TRUE, warning=FALSE}
-vacias<-as.data.frame(c(stopwords(kind="es"), 
-                        readLines("data\\stop-words_spanish_1_es.txt", encoding="UTF-8"),
-                        readLines("data\\stop-words_spanish_2_es.txt", encoding="UTF-8"),
-                        readLines("data\\stopwords_utn.txt", encoding="ASCII-Latin")))
-names(vacias) <- "palabra"
-```
-
-#### Ahora armamos el nuevo dataset
-```{r, echo=TRUE, warning=FALSE}
-
-actas <- actas_CS %>%
-  group_by(anio)%>% 
-  mutate(linea = row_number()) %>%
-  ungroup()
-
-actas_tokenizadas <- actas %>%  unnest_tokens(word, txt)
-actas_tokenizadas <- actas_tokenizadas %>% anti_join(vacias, by = c("word" = "palabra"))
-actas_tokenizadas %>% count(word, sort = TRUE)
-
-actas_tokenizadas %>% 
-  group_by(anio) %>% 
-  count(word, sort = TRUE) %>% 
-  slice(1) %>% 
-  ggplot() +
-  geom_bar(aes(x = word, weight = n, fill = word)) +
-  coord_flip() +
-  facet_wrap(~anio) +
-  labs(title = "Actas",
-       subtitle = "Palabra m�s frecuente por a�o",
-       x = "palabra",
-       y = "veces hallada")
-```
-
