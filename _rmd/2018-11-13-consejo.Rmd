@@ -20,6 +20,8 @@ En este caso hemos tomado las actas de reuniones del Consejo Superior de los úl
 Los paquetes necesarios serán: NLP, openNLP y magrittr
 En primer lugar ejecutamos la función para extraer el texto de las actas, actualmente almacenadas en archivos .pdf. Ese post se puede ver en: ENLACE
 ```{r, echo=FALSE}
+
+
   library(pdftools)
   library(rvest)
   library(readr)
@@ -38,6 +40,7 @@ En primer lugar ejecutamos la función para extraer el texto de las actas, actua
   library(tm)
   library(wordcloud)
   library(ggplot2)
+
 ```
 
 ###En esta oportunidad sólo importamos el archivo .csv generado:
@@ -54,15 +57,10 @@ En primer lugar ejecutamos la función para extraer el texto de las actas, actua
 En primer lugar analizaremos cuantas actas por año se recuperaron, que ser�?a equivalente a la cantidad de reuniones llevadas a cabo
 ```{r, echo=TRUE}
 
-reuniones <- actas_CS[actas_CS$anio != "2005" & 
-                        actas_CS$anio != "3.pd" & 
-                        actas_CS$anio != "AU20" & 
-                        !is.na(actas_CS$anio),] %>% 
+reuniones <- actas_CS[!is.na(actas_CS$anio),] %>% 
   count(anio, reunion, sort = TRUE) %>% 
   group_by(anio)
 
-```
-#codigo para ejecutar
 anios <- as.data.frame(reuniones$anio, reuniones$reunion)
 names(anios)<-"anio"
 
@@ -75,6 +73,7 @@ Freuniones<- ggplot(anios, aes(x=as.factor(anios$anio),
   theme_minimal() +
   ggtitle("Reuniones de CS UTN")
 
+```
 
 ### El gráfico de frecuencias de reuniones por año:
 ```{r simpleplot, fig.path="../sole_blog/figures/"}
