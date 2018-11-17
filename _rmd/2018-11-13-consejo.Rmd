@@ -60,6 +60,7 @@ reuniones <- actas_CS[actas_CS$anio != "2005" &
                         !is.na(actas_CS$anio),] %>% 
   count(anio, reunion, sort = TRUE) %>% 
   group_by(anio)
+```
 
 anios <- as.data.frame(reuniones$anio, reuniones$reunion)
 names(anios)<-"anio"
@@ -73,7 +74,7 @@ Freuniones<- ggplot(anios, aes(x=as.factor(anios$anio),
   theme_minimal() +
   ggtitle("Reuniones de CS UTN")
 
-```
+
 ### El gráfico de frecuencias de reuniones por año:
 ```{r simpleplot, fig.path="../sole_blog/figures/"}
 
