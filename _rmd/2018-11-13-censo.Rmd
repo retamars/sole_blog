@@ -1,0 +1,18 @@
+---
+layout: post
+title: Otro post
+author: Soledad Retamar
+published: false
+output: html_document
+status: process
+draft: false
+tags: censo
+---
+  
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Prueba de post
+En este post ...
