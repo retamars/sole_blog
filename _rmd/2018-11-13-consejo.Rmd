@@ -60,8 +60,9 @@ reuniones <- actas_CS[actas_CS$anio != "2005" &
                         !is.na(actas_CS$anio),] %>% 
   count(anio, reunion, sort = TRUE) %>% 
   group_by(anio)
-```
 
+```
+#codigo para ejecutar
 anios <- as.data.frame(reuniones$anio, reuniones$reunion)
 names(anios)<-"anio"
 
