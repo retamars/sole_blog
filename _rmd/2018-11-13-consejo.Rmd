@@ -74,3 +74,4 @@ En primer lugar analizaremos cuantas actas por a√±o se recuperaron, que ser√?a e
 ```{r simpleplot, fig.path='../sole_blog/figures/'}
   plot(Freuniones)
 ```
+
