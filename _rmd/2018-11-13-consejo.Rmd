@@ -75,38 +75,3 @@ En primer lugar analizaremos cuantas actas por a√±o se recuperaron, que ser√?a e
 ```{r simpleplot, fig.path='../sole_blog/figures/'}
   plot(Freuniones)
 ```
-
-## Palabras mas frecuentes por a√±o
-```{r, echo=TRUE, warning=FALSE}
-vacias<-as.data.frame(c(stopwords(kind="es"), 
-          readLines("data\\stop-words_spanish_1_es.txt", encoding="UTF-8"),
-          readLines("data\\stop-words_spanish_2_es.txt", encoding="UTF-8"),
-          readLines("data\\stopwords_utn.txt", encoding="ASCII-Latin")))
-names(vacias) <- "palabra"
-```
-
-#### Ahora armamos el nuevo dataset
-```{r, echo=TRUE, warning=FALSE}
-
-actas <- actas_CS %>%
-  group_by(anio)%>% 
-  mutate(linea = row_number()) %>%
-  ungroup()
-
-actas_tokenizadas <- actas %>%  unnest_tokens(word, txt)
-actas_tokenizadas <- actas_tokenizadas %>% anti_join(vacias, by = c("word" = "palabra"))
-actas_tokenizadas %>% count(word, sort = TRUE)
-
-actas_tokenizadas %>% 
-  group_by(anio) %>% 
-  count(word, sort = TRUE) %>% 
-  slice(1) %>% 
-  ggplot() +
-  geom_bar(aes(x = word, weight = n, fill = word)) +
-  coord_flip() +
-  facet_wrap(~anio) +
-  labs(title = "Actas",
-       subtitle = "Palabra m·s frecuente por aÒo",
-       x = "palabra",
-       y = "veces hallada")
-```
