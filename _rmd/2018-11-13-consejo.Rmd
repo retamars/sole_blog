@@ -59,29 +59,8 @@ En primer lugar analizaremos cuantas actas por año se recuperaron, que ser�?a e
 reuniones <- actas_CS[!is.na(actas_CS$anio),] %>% 
   count(anio, reunion, sort = TRUE) %>% 
   group_by(anio)
+
+reuniones
   
-```
-```{r}
-anios <- as.data.frame(reuniones$anio)
-names(anios)<-"anio"
-anios
-```
-```{r}
-Freuniones<- ggplot(anios, aes(x=as.factor(anios$anio), 
-                               fill = as.numeric(anios$anio))) + 
-  geom_bar(position='dodge', show.legend = FALSE) + 
-  xlab("Año") + 
-  ylab("Cantidad") + 
-  scale_x_discrete("Años" ) + 
-  theme_minimal() +
-  ggtitle("Reuniones de CS UTN")
-
-```
-
-### El gráfico de frecuencias de reuniones por año:
-```{r simpleplot, fig.path="../sole_blog/figures/"}
-
-plot(Freuniones)
-
 ```
 
