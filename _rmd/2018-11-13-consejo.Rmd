@@ -10,9 +10,8 @@ tags: consejo
 ---
 
 ```{r setup, include=FALSE}
-  knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
-
 
 ## Actas de reuniones del Consejo Superior de UTN
 En este post trataremos de reproducir el trabajo realizado por .
@@ -85,3 +84,4 @@ Freuniones<- ggplot(anios, aes(x=as.factor(anios$anio),
 plot(Freuniones)
 
 ```
+
