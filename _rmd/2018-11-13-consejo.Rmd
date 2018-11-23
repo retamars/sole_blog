@@ -55,15 +55,19 @@ En primer lugar ejecutamos la función para extraer el texto de las actas, actua
 
 ### Cantidad de Reuniones por Año
 En primer lugar analizaremos cuantas actas por año se recuperaron, que ser�?a equivalente a la cantidad de reuniones llevadas a cabo
-```{r, echo=TRUE}
+```{r}
 
 reuniones <- actas_CS[!is.na(actas_CS$anio),] %>% 
   count(anio, reunion, sort = TRUE) %>% 
   group_by(anio)
-
-anios <- as.data.frame(reuniones$anio, reuniones$reunion)
+  
+```
+```{r}
+anios <- as.data.frame(reuniones$anio)
 names(anios)<-"anio"
-
+anios
+```
+```{r}
 Freuniones<- ggplot(anios, aes(x=as.factor(anios$anio), 
                                fill = as.numeric(anios$anio))) + 
   geom_bar(position='dodge', show.legend = FALSE) + 
