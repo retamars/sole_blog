@@ -174,6 +174,12 @@ org = noticia[annot.l1[k == "organization"]]
  
 Si vemos las organizaciones:
 
+{% highlight r %}
+org
+{% endhighlight %}
+
+
+
 {% highlight text %}
 ## [1] "China"            "Rusia"            "Estados Unidos\""
 ## [4] "Francia"          "EEUU"

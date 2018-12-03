@@ -116,7 +116,7 @@ org = noticia[annot.l1[k == "organization"]]
 ```
 
 Si vemos las organizaciones:
-```{r, echo=FALSE}
+```{r}
 org
 ```
 

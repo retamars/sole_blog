@@ -17,7 +17,7 @@ En este post trataremos de reproducir el trabajo realizado por .
 En este caso hemos tomado las actas de reuniones del Consejo Superior de los últimos 10 años.
 Los paquetes necesarios serán: NLP, openNLP y magrittr
 En primer lugar ejecutamos la función para extraer el texto de las actas, actualmente almacenadas en archivos .pdf. Ese post se puede ver en: ENLACE
-```{r, echo=FALSE}
+```{r}
   library(pdftools)
   library(rvest)
   library(readr)
