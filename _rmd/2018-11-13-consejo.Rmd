@@ -17,9 +17,7 @@ En este post trataremos de reproducir el trabajo realizado por .
 En este caso hemos tomado las actas de reuniones del Consejo Superior de los últimos 10 años.
 Los paquetes necesarios serán: NLP, openNLP y magrittr
 En primer lugar ejecutamos la función para extraer el texto de las actas, actualmente almacenadas en archivos .pdf. Ese post se puede ver en: ENLACE
-```{r}
-
-
+```{r, echo=FALSE}
   library(pdftools)
   library(rvest)
   library(readr)
@@ -52,14 +50,12 @@ En primer lugar ejecutamos la función para extraer el texto de las actas, actua
 ```
 ### Cantidad de Reuniones por Año
 En primer lugar analizaremos cuantas actas por año se recuperaron, que ser�?a equivalente a la cantidad de reuniones llevadas a cabo
-```{r}
 
+```{r}
 reuniones <- actas_CS[!is.na(actas_CS$anio),] %>% 
   count(anio, reunion, sort = TRUE) %>% 
   group_by(anio)
 
 reuniones
-
 ```
-
 
