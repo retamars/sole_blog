@@ -50,4 +50,16 @@ En primer lugar ejecutamos la función para extraer el texto de las actas, actua
                        "lugar", "txt")
   
 ```
+### Cantidad de Reuniones por Año
+En primer lugar analizaremos cuantas actas por año se recuperaron, que ser�?a equivalente a la cantidad de reuniones llevadas a cabo
+```{r}
+
+reuniones <- actas_CS[!is.na(actas_CS$anio),] %>% 
+  count(anio, reunion, sort = TRUE) %>% 
+  group_by(anio)
+
+reuniones
+
+```
+
 
