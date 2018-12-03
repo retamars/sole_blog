@@ -3,7 +3,6 @@ layout: post
 title: Actas CS UTN
 author: Soledad Retamar
 published: false
-output: html_document
 status: process
 draft: false
 tags: consejo

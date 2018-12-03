@@ -20,7 +20,26 @@ Los paquetes necesarios serán: NLP, openNLP y magrittr
 library(NLP)
 library(openNLP)
 library(magrittr)
- 
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## 
+## Attaching package: 'magrittr'
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## The following object is masked from 'package:purrr':
+## 
+##     set_names
+{% endhighlight %}
+
+
+
+{% highlight r %}
 noticia <- as.String('Donald Trump apuntó este martes contra el presidente francés, 
 Emmanuel Macron, por su propuesta de crear un ejército europeo, en un nuevo reclamo 
 hacia sus aliados europeos para que refuercen su aporte económico hacia el 
