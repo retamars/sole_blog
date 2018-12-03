@@ -97,7 +97,7 @@ k <- sapply(annot.l1$features, `[[`, "kind")
 personas = noticia[annot.l1[k == "person"]]
 ```
 Los nombres propios que se encontraron en la noticia son:
-```{r, echo=FALSE}
+```{r}
 personas
 ```
 
@@ -106,7 +106,7 @@ personas
 lugares = noticia[annot.l1[k == "location"]]
 ```
 Si vizualizamos los lugares que detectó en la noticia obtendremos:
-```{r, echo=FALSE}
+```{r}
 lugares
 ```
 
