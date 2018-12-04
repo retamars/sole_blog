@@ -18,12 +18,12 @@ En este caso hemos tomado las actas de reuniones del Consejo Superior de los úl
 Los paquetes necesarios serán: NLP, openNLP y magrittr
 En primer lugar ejecutamos la función para extraer el texto de las actas, actualmente almacenadas en archivos .pdf. Ese post se puede ver en: ENLACE
 ```{r}
-  library(pdftools)
+ 
   library(rvest)
   library(readr)
   library(purrr)
   library(stringr)
-  library(stringi)
+ 
   library(dplyr)
   library(tidyr)
   library(tidyverse)
