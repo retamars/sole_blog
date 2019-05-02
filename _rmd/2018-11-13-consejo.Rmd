@@ -14,9 +14,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Actas de reuniones del Consejo Superior de UTN
 En este post trataremos de reproducir el trabajo realizado por .
-En este caso hemos tomado las actas de reuniones del Consejo Superior de los Ãºltimos 10 aÃ±os.
-Los paquetes necesarios serÃ¡n: NLP, openNLP y magrittr
-En primer lugar ejecutamos la funciÃ³n para extraer el texto de las actas, actualmente almacenadas en archivos .pdf. Ese post se puede ver en: ENLACE
+En este caso hemos tomado las actas de reuniones del Consejo Superior de los últimos 10 años.
+Los paquetes necesarios serán: NLP, openNLP y magrittr
+En primer lugar ejecutamos la función para extraer el texto de las actas, actualmente almacenadas en archivos .pdf. Ese post se puede ver en: ENLACE
 ```{r}
  
   library(rvest)
@@ -48,8 +48,8 @@ En primer lugar ejecutamos la funciÃ³n para extraer el texto de las actas, actua
                        "lugar", "txt")
   
 ```
-### Cantidad de Reuniones por AÃ±o
-En primer lugar analizaremos cuantas actas por aÃ±o se recuperaron, que serÃ?a equivalente a la cantidad de reuniones llevadas a cabo
+### Cantidad de Reuniones por Año
+En primer lugar analizaremos cuantas actas por año se recuperaron, que sería equivalente a la cantidad de reuniones llevadas a cabo
 
 ```{r}
 reuniones <- actas_CS[!is.na(actas_CS$anio),] %>% 
