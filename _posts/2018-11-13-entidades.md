@@ -17,22 +17,14 @@ Los paquetes necesarios serán: NLP, openNLP y magrittr
  
 
 {% highlight r %}
+library(tm)
 library(NLP)
 library(openNLP)
+library(rJava)
+library(qdap)
 library(magrittr)
-noticia <- as.String('Donald Trump apuntó este martes contra el presidente frances, 
-Emmanuel Macron, por su propuesta de crear un ejercito europeo, en un nuevo reclamo 
-hacia sus aliados europeos para que refuercen su aporte económico hacia el 
-financiamiento de la OTAN.
-Macron declaró la semana pasada la necesidad de proteger con unas fuerzas armadas 
-a Europa,"en relación a China, Rusia e incluso Estados Unidos", una idea que Trump
-calificó el viernes como "insultante". Ahora, renovó su rechazo con un mordaz 
-comentario, reabriendo heridas entre París y Berlín, hoy estrechos aliados y 
-defensores del multilateralismo.
-"Fue Alemania en la Primera y Segunda Guerra Mundial. Â¿Cómo funcionó eso para Francia?
-Ellos estaban comenzando a aprender alemán en París antes de que EEUU intervenga", 
-escribió en su Twitter, en referencia a la ocupación nazi sobre la capital francesa, 
-entre 1940 y 1944.')
+ 
+noticia <- as.String('Donald Trump apuntó este martes contra el presidente frances, Emmanuel Macron, por su propuesta de crear un ejercito europeo, en un nuevo reclamo hacia sus aliados europeos para que refuercen su aporte económico hacia el financiamiento de la OTAN. Macron declaró la semana pasada la necesidad de proteger con unas fuerzas armadas a Europa,en relación a China, Rusia e incluso Estados Unidos, una idea que Trump calificó el viernes como insultante. Ahora, renovó su rechazo con un mordaz comentario, reabriendo heridas entre París y Berlín, hoy estrechos aliados y defensores del multilateralismo. Fue Alemania en la Primera y Segunda Guerra Mundial. ¿Cómo funcionó eso para Francia? Ellos estaban comenzando a aprender alemán en París antes de que EEUU intervenga, escribió en su Twitter, en referencia a la ocupación nazi sobre la capital francesa, entre 1940 y 1944.')
 {% endhighlight %}
  
 ## Palabras y Oraciones
@@ -41,18 +33,21 @@ Necesitaremos definir dos funciones, basadas en librerías de Java, que nos marca
 {% highlight r %}
 palabras_ann <- Maxent_Word_Token_Annotator()
 oracion_ann <- Maxent_Sent_Token_Annotator()
+persona_ann <- Maxent_Entity_Annotator(language ="es", kind = "person")
+ubicacion_ann <-Maxent_Entity_Annotator(language ="es", kind = "location")
+organizacion_ann <- Maxent_Entity_Annotator(language ="es", kind = "organization")
 {% endhighlight %}
 Llamaremos iterativamente a estas funciones para el texto contenido en noticia para determinar primero dónde están las oraciones y luego determinar dónde están las palabras. 
 Podemos aplicar estas funciones a nuestros datos utilizando la función annotate().
 
 {% highlight r %}
-noticia1_annotations <- annotate(noticia, list(oracion_ann, palabras_ann))
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## Error in as.data.frame.default(x[[i]], optional = TRUE): cannot coerce class 'c("Simple_Sent_Token_Annotator", "Annotator")' to a data.frame
+# noticia1_annotations <- annotate(noticia, list(oracion_ann, palabras_ann))
+annot.l1 = NLP::annotate(noticia, list(oracion_ann, palabras_ann,ubicacion_ann,persona_ann, organizacion_ann))
+k <- sapply(annot.l1$features, `[[`, "kind")
+ 
+personas = noticia[annot.l1[k == "person"]]
+lugares = noticia[annot.l1[k == "location"]]
+org = noticia[annot.l1[k == "organization"]]
 {% endhighlight %}
 El objeto creado contiene ahora un objeto que contiene una lista de oraciones y de palabras identificadas por posición. 
 
@@ -156,7 +151,7 @@ lugares
 
 
 {% highlight text %}
-## [1] "Europa"  "Francia" "París"
+## [1] "Francia" "París"
 {% endhighlight %}
  
 ### Organizaciones
@@ -174,8 +169,8 @@ org
 
 
 {% highlight text %}
-## [1] "China"            "Rusia"            "Estados Unidos\""
-## [4] "Francia"          "EEUU"
+## [1] "China"          "Rusia"          "Estados Unidos" "Francia"       
+## [5] "EEUU"
 {% endhighlight %}
  
  
