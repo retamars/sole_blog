@@ -12,6 +12,7 @@ tags: consejo
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
 ## Actas de reuniones del Consejo Superior de UTN
 En este post trataremos de reproducir el trabajo realizado por .
 En este caso hemos tomado las actas de reuniones del Consejo Superior de los últimos 10 años.
