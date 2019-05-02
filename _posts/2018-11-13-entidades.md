@@ -8,7 +8,7 @@ draft: false
 tags: entidades
 ---
  
-
+  
  
 ## Detección de oraciones y palabras
 Con estas lineas de código describiremos como detectar oraciones, palabras, personas, lugares y organizaciones en un texto. Para realizarlo mas práctico en este ejemplo analizaremos una noticia extraída y asignaremos el texto en el código, pero se podría aplicar al texto que obtengamos dinamicamente de nuestras fuentes de datos.
